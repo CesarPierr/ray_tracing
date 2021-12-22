@@ -1,11 +1,13 @@
 #ifndef OBJET_HPP
 #define OBJET_HPP
-#include "color.hpp"
 #include "materiaux.hpp"
 class Objet
 {
     public : 
-        virtual vector3 intersect();
-        virtual void 
+        Materiaux ext_m;
+        Materiaux int_m;
+        virtual Point3 intersect();
+        virtual Vector3 normal(Point3 inter, bool& omw);
+
 }
 #endif

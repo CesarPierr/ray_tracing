@@ -7,7 +7,7 @@
 #include<iostream>
 #include <assert.h>
 template<typename T,std::size_t N>
-class PointVector : std::array<T,N>
+class PointVector : public std::array<T,N>
 {
     public :
     
@@ -55,7 +55,8 @@ class PointVector : std::array<T,N>
         {
             return this->data(); 
         }
-
+        
+        
         operator const T*() const 
         {
             return this->data(); 

@@ -1,12 +1,16 @@
 
 
-#include "pointVector.hpp"
-#include <stdlib.h>
+#include "color.hpp"
 
 int main(){
-    PointVector<float,3> A(3,4,5);
-    PointVector<float,3> B(1,2,3);
-    PointVector<float,3> C = A+B;
-    std::cout << C << std::endl;
+    Color a(0.1,0.2,0.3);
+    a = a*2;
+    Color b(0.1,0.2,0.3);
+    a+=b;
+    std::cout << b.r() << b.g() << a.b() << std::endl;
+    int t;
+    float s,v;
+    a.setTSV(t,s,v);
+    std::cout << t << " " << s << " " << v << std::endl;
     return 0;
 }
