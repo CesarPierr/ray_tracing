@@ -18,25 +18,26 @@ class PointVector : public std::array<T,N>
                 (*this)[i] = v;
                 i++;
             }
-        }
+        };
         PointVector(T a) {
             if (N > 0){
                 (*this)[0] = a;
             }
-        }
+        };
         PointVector(T a, T b) {
             if (N > 1){
                 (*this)[0] = a;
                 (*this)[1] = b;
             }
-        }
+        };
         PointVector(T a, T b, T c) {
             if (N > 2){
                 (*this)[0] = a;
                 (*this)[1] = b;
                 (*this)[2] = c;
             }
-        }
+        };
+
         PointVector(T a, T b, T c, T d){
             if (N > 3){
                 (*this)[0] = a;
@@ -44,12 +45,17 @@ class PointVector : public std::array<T,N>
                 (*this)[2] = c;
                 (*this)[3] = d;
             }
-        }
+        };
 
+        PointVector(const PointVector<T,N>& pv)
+        {
+            for(int i =0; i < N ; i++)
+                (*this)[i] = pv[i];
+        };
         PointVector(const T* vals){
             for ( int i = 0; i < N; i++ ) 
                 (*this)[ i ] = *vals++;
-        }
+        };
 
         operator T*()
         {
@@ -203,11 +209,5 @@ typedef PointVector< float, 3 > Point3;
 //4d vector and 4d point
 typedef PointVector< float, 4 > Vector4;
 typedef PointVector< float, 4 > Point4;
-
-
-
-
-
-
 
 #endif

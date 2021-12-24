@@ -27,7 +27,7 @@ class Color
             return tmp;
         }
 
-        Color operator *(Color &c) const
+        Color operator *(const Color &c) const
         {
             Color tmp(*this);
             tmp.rgb[0] *= c.rgb[0];
@@ -36,7 +36,7 @@ class Color
             return tmp;
         }
 
-        Color operator +(Color &c) const
+        Color operator +(const Color &c) const
         {
             Color tmp(*this);
             tmp.rgb[0] += c.rgb[0];
