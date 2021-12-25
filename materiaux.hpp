@@ -92,5 +92,77 @@ class Materiaux //utilisation des modeles informatiques des caracteristiques opt
             m.out_refractive_index = 1.0f;
             return m;
         }
+
+        static Materiaux moquette_moche() 
+        {
+            Materiaux m;
+            m.ambient   = Color( 0.05, 0.1, 0.01);
+            m.diffuse   = Color( 0.1, 0.35, 0.1 );
+            m.specular  = Color( 1.0, 1.0, 1.0 );
+            m.shinyness = 6.0f;
+            m.coef_diffusion  = 0.5f;
+            m.coef_reflexion  = 0.0f;
+            m.coef_refraction = 0.0f;
+            m.in_refractive_index  = 1.5f;
+            m.out_refractive_index = 1.0f;
+            return m;
+        }
+        static Materiaux moquette_bleue() 
+        {
+            Materiaux m;
+            m.ambient   = Color( 0.0, 0.0, 1.0 );
+            m.diffuse   = Color( 0.0, 0.0, 1.0 );
+            m.specular  = Color( 1.0, 1.0, 1.0 );
+            m.shinyness = 6.0f;
+            m.coef_diffusion  = 0.5f;
+            m.coef_reflexion  = 0.0f;
+            m.coef_refraction = 0.0f;
+            m.in_refractive_index  = 1.5f;
+            m.out_refractive_index = 1.0f;
+            return m;
+        }
+
+        static Materiaux moquette_verte() 
+        {
+            Materiaux m;
+            m.ambient   = Color( 0.0, 1.0, 0.0 );
+            m.diffuse   = Color( 0.0, 1.0, 0.0 );
+            m.specular  = Color( 1.0, 1.0, 1.0 );
+            m.shinyness = 6.0f;
+            m.coef_diffusion  = 0.5f;
+            m.coef_reflexion  = 0.0f;
+            m.coef_refraction = 0.0f;
+            m.in_refractive_index  = 1.5f;
+            m.out_refractive_index = 1.0f;
+            return m;
+        }
+        static Materiaux moquette_blanche() 
+        {
+            Materiaux m;
+            m.ambient   = Color( 1.0, 1.0, 1.0 );
+            m.diffuse   = Color( 1.0, 1.0, 1.0 );
+            m.specular  = Color( 1.0, 1.0, 1.0 );
+            m.shinyness = 6.0f;
+            m.coef_diffusion  = 0.5f;
+            m.coef_reflexion  = 0.0f;
+            m.coef_refraction = 0.0f;
+            m.in_refractive_index  = 1.5f;
+            m.out_refractive_index = 1.0f;
+            return m;
+        }
+        static Materiaux moquette_rouge() 
+        {
+            Materiaux m;
+            m.ambient   = Color( 1.0, 0.0, 0.0 );
+            m.diffuse   = Color( 1.0, 0.0, 0.0 );
+            m.specular  = Color( 1.0, 1.0, 1.0 );
+            m.shinyness = 6.0f;
+            m.coef_diffusion  = 0.5f;
+            m.coef_reflexion  = 0.0f;
+            m.coef_refraction = 0.0f;
+            m.in_refractive_index  = 1.5f;
+            m.out_refractive_index = 1.0f;
+            return m;
+        }
 };
 #endif
