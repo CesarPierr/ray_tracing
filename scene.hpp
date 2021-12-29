@@ -54,7 +54,7 @@ class Scene
             environnement = &env;
         }
     
-        int inter(Point3 &pt_inter, Ray r, int &type)
+        int inter(Point3 &pt_inter,const Ray &r, int &type)
         {
             Point3 test;
             float distance = -1, d_int;
@@ -89,19 +89,54 @@ class Scene
             return n_obj;
         }
 
-        Color get_PON(const Point3 &pt, const Vector3 & normale, const Materiaux& m)
+        Color get_PON(const Point3 &pt, const Vector3 & normale, const Materiaux& m,const Ray& viewRay)
         {
             Color retour(0.0,0.0,0.0), col_lum;
             Vector3 L;
+            Ray r;
             for(int i = 0; i< nb_light;i++)
             {
-                (*l_lumieres[i]).get_inter(pt,L,col_lum);
+                float distance = (*l_lumieres[i]).get_inter(pt,L,col_lum);
                 float k = L.dot(normale);
+                float shadowed = 1;
+                Point3 intershadow;
+
+                float reflet = 2.0f * L.dot(normale);
+                Vector3 phongDir = L - reflet * normale;
+
+                float phongTerm = std::max(phongDir.dot(viewRay.dir), 0.0f) ;
+                phongTerm = powf(phongTerm, m.shinyness);
+
                 if(k>0)
-                    retour+= col_lum*m.diffuse*k*m.coef_diffusion;
+                {
+                    r = Ray(pt,L);
+                    shadowed = inter_shadow(r,distance);
+                    retour += (col_lum*m.specular*phongTerm+col_lum*m.diffuse*k*m.coef_diffusion)*shadowed;
+                }
+            }
+            
+
+            return retour;
+        }
+
+        float inter_shadow(const Ray &r, float distance_light)
+        {
+            Point3 test;
+            float retour = 1;
+            for (int i=0; i<nb_objet;i++)
+            {
+                float d = (*l_objets[i]).get_inter(r,test);
+                if(d>=distance_light || d <0 )
+                    continue;
+                else    
+                    retour*=(*l_objets[i]).mat.coef_refraction;
+                
+                if(retour == 0)
+                    break;
             }
             return retour;
         }
+
         void compute(Ray &r, int prof)
         {
             if (prof > prof_max)
@@ -131,17 +166,16 @@ class Scene
                             normale = current_obj.get_normal(pt_inter);
                             normale /= normale.norm();
                             m = current_obj.get_mat(pt_inter);
-                            Color diffuse = get_PON(pt_inter,normale,m);
+                            Color diffuse_spec = get_PON(pt_inter,normale,m,r);
                             //load the reflected ray 
                             r_reflexion = current_obj.get_reflected_ray(r,pt_inter,normale);
                             r_transmission = current_obj.get_refracted_ray(r,pt_inter,normale);
                             compute(r_reflexion,prof+1);
                             //load the refracted ray
-                            
                             compute(r_transmission, prof+1);
                         
                             
-                            r.pix = 0.0*m.ambient+diffuse+m.coef_refraction*r_transmission.pix+m.coef_reflexion*r_reflexion.pix;
+                            r.pix = 0.2*m.ambient+diffuse_spec+m.coef_refraction*r_transmission.pix+m.coef_reflexion*r_reflexion.pix;
                             break;
                     }
                 }

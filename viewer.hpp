@@ -65,10 +65,14 @@ class Screen : public std::vector<Vector3>
                 << width << " " << height << "\n255\n";
             
             for ( int i = 0; i < width * height; ++i ) {
-                (*this)[i]*= 255;
-                unsigned char r = (*this)[i][0] <= 255 ? (unsigned char)((int)(*this)[i][0]) : (unsigned char)((int)254) ;
-                unsigned char g = (*this)[i][1] <= 255 ? (unsigned char)((int)(*this)[i][1]) : (unsigned char)((int)254);
-                unsigned char b = (*this)[i][2] <= 255 ? (unsigned char)((int)(*this)[i][2]) : (unsigned char)((int)254);
+                float exposure = - 5.0f;
+                (*this)[i][0] = 1.0f - expf((*this)[i][0] * exposure);
+                (*this)[i][1] = 1.0f - expf((*this)[i][1] * exposure);
+                (*this)[i][2] = 1.0f - expf((*this)[i][2] * exposure);
+                (*this)[i]*= 254;
+                unsigned char r = (unsigned char)((int)(*this)[i][0]);
+                unsigned char g = (unsigned char)((int)(*this)[i][1]) ;
+                unsigned char b = (unsigned char)((int)(*this)[i][2]) ;
 
                 ofs << r << g << b;
             }

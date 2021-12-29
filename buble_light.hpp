@@ -17,7 +17,7 @@ class Buble_light : public Light
         {
             L = centre-p;
             float distance = L.norm();
-            L = L/distance;
+            L /= L.norm();
             c = light_color;
             return distance - rayon;
         }

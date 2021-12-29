@@ -7,24 +7,24 @@
 
 int main(){
 
-    Sphere S1(Point3(12.0,2.0,1.5), 3, Materiaux().emerald());
-    Sphere S2(Point3(13.0,0.0,0.0),3,Materiaux().redPlastic());
-    Sphere S3(Point3(12.0,2.0,-1.5), 3, Materiaux().emerald());
+    Sphere S1(Point3(18.0,4.0,4.0), 3, Materiaux().emerald_green());
+    Sphere S2(Point3(18.0,-2.0,0.0),3,Materiaux().glass());
+    Sphere S3(Point3(18.0,4.0,-4), 3, Materiaux().emerald_red());
 
     Plan P(Point3(0.0,-5.0,0.0),Vector3(0.0,1.0,0.0),Materiaux().moquette_moche() );
-    Plan P_devant(Point3(25.0,0.0,0.0),Vector3(-1.0,0.0,0.0),Materiaux().moquette_verte());
+    Plan P_devant(Point3(22.0,0.0,0.0),Vector3(-1.0,0.0,0.0),Materiaux().moquette_jaune());
     Plan P_gauche(Point3(0.0,0.0,-12.0),Vector3(0.0,0.0,1.0),Materiaux().moquette_bleue() );
     Plan P_droite(Point3(13.0,12.0,12.0),Vector3(0.0,0.0,-1.0),Materiaux().moquette_rouge() );
     Plan P_haut(Point3(8.0,8.0,12.0),Vector3(0.0,-1.0,0.0),Materiaux().moquette_blanche() );
-    Plan P_derriere(Point3(-5.0,8.0,12.0),Vector3(1.0,0.0,0.0),Materiaux().moquette_blanche() );
-    Buble_light Bl(Point3(7.0,4.0,0.0),0.5);
+    Plan P_derriere(Point3(-5.0,8.0,12.0),Vector3(1.0,0.0,0.0),Materiaux().moquette_moche() );
+    Buble_light Bl(Point3(16.0,7.0,0.0),1);
     BaseEnv env;
-    Bl.light_color = Color(1.0,1.0,1.0);
+    Bl.light_color = Color(1.0,94.0/255.0,50.0/255.0);
     Scene S;
 
     
     S.add_object(S1);
-    //S.add_object(S2);
+    S.add_object(S2);
     S.add_object(S3);
     S.add_object(P);
     S.add_object(P_devant);
