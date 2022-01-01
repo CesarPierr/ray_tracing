@@ -11,7 +11,7 @@ int main(){
     Sphere S2(Point3(18.0,-2.0,0.0),3,Materiaux().glass());
     Sphere S3(Point3(18.0,4.0,-4), 3, Materiaux().emerald_red());
 
-    Plan P(Point3(0.0,-5.0,0.0),Vector3(0.0,1.0,0.0),Materiaux().moquette_moche() );
+    Plan P(Point3(0.0,-5.0,0.0),Vector3(0.0,1.0,0.0),Materiaux().moquette_mirroir() );
     Plan P_devant(Point3(22.0,0.0,0.0),Vector3(-1.0,0.0,0.0),Materiaux().moquette_jaune());
     Plan P_gauche(Point3(0.0,0.0,-12.0),Vector3(0.0,0.0,1.0),Materiaux().moquette_bleue() );
     Plan P_droite(Point3(13.0,12.0,12.0),Vector3(0.0,0.0,-1.0),Materiaux().moquette_rouge() );
@@ -19,7 +19,7 @@ int main(){
     Plan P_derriere(Point3(-5.0,8.0,12.0),Vector3(1.0,0.0,0.0),Materiaux().moquette_moche() );
     Buble_light Bl(Point3(16.0,7.0,0.0),1);
     BaseEnv env;
-    Bl.light_color = Color(1.0,94.0/255.0,50.0/255.0);
+    Bl.light_color = Color(1.0,1.0,1.0);
     Scene S;
 
     

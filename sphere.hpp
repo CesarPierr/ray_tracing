@@ -44,9 +44,11 @@ class Sphere : public Objet
 
         Vector3 get_normal(const Point3& inter)
         {
+            
             Vector3 n = inter-centre;
             return n;
         }
+        
         Ray get_refracted_ray(const Ray &inc_ray,const Point3& p,const Vector3& normale)
         {
             //calcul first refraction direction

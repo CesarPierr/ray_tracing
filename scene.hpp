@@ -172,10 +172,10 @@ class Scene
                             r_transmission = current_obj.get_refracted_ray(r,pt_inter,normale);
                             compute(r_reflexion,prof+1);
                             //load the refracted ray
-                            compute(r_transmission, prof+1);
+                            //compute(r_transmission, prof+1);
                         
                             
-                            r.pix = 0.2*m.ambient+diffuse_spec+m.coef_refraction*r_transmission.pix+m.coef_reflexion*r_reflexion.pix;
+                            r.pix = 0.2*m.ambient+diffuse_spec+m.coef_reflexion*r_reflexion.pix;//+m.coef_refraction*r_transmission.pix
                             break;
                     }
                 }

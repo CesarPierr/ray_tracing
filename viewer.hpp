@@ -13,11 +13,11 @@ class Screen : public std::vector<Vector3>
         Scene S;
         Point3 pos = Point3(0.0,0.0,0.0);
         float distance = 2;
-        float pixel_size = 0.002;
+        float pixel_size = 0.001;
         //base de la matrice de pixel dans l'espace (plan v,b et t direction de regard)
         Vector3 t = Vector3(1.0,0.0,0.0), v = Vector3(0.0,1.0,0.0), b = Vector3(0.0,0.0,1.0); 
 
-        Screen(): width(1920),height(1080) 
+        Screen(): width(1920*2),height(1080*2) 
         { 
             (*this).reserve(width*height);
         };

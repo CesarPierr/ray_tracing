@@ -81,7 +81,7 @@ class Materiaux //utilisation des modeles informatiques des caracteristiques opt
         static Materiaux emerald_green() 
         {
             Materiaux m;
-            m.ambient   = Color( 0.0f, 0.2f, 0.0f ); //Color( 0.0215, 0.1745, 0.0215 );
+            m.ambient   = Color( 0.0f, 0.05f, 0.0f ); //Color( 0.0215, 0.1745, 0.0215 );
             m.diffuse   = Color( 0.1, 0.77, 0.10 );
             m.specular  = Color( 0.9, 1.0, 0.9 ); // Color( 0.633, 0.727811, 0.633 );
             m.shinyness = 0.6*128.0;
@@ -96,7 +96,7 @@ class Materiaux //utilisation des modeles informatiques des caracteristiques opt
         static Materiaux emerald_red() 
         {
             Materiaux m;
-            m.ambient   = Color( 0.2f, 0.01f, 0.0f ); //Color( 0.0215, 0.1745, 0.0215 );
+            m.ambient   = Color( 0.2f, 0.05f, 0.0f ); //Color( 0.0215, 0.1745, 0.0215 );
             m.diffuse   = Color( 0.77f, 0.1f, 0.10f );
             m.specular  = Color( 0.9, 1.0, 0.9 ); // Color( 0.633, 0.727811, 0.633 );
             m.shinyness = 0.6*128.0;
@@ -129,7 +129,7 @@ class Materiaux //utilisation des modeles informatiques des caracteristiques opt
             m.ambient   = Color( 0.05, 0.1, 0.01);
             m.diffuse   = Color( 0.35, 0.35, 0.35 );
             m.specular  = Color( 1.0, 1.0, 1.0 );
-            m.shinyness = 6.0f;
+            m.shinyness = 3.0f;
             m.coef_diffusion  = 1.0f;
             m.coef_reflexion  = 0.0f;
             m.coef_refraction = 0.0f;
@@ -143,7 +143,7 @@ class Materiaux //utilisation des modeles informatiques des caracteristiques opt
             m.ambient   = Color( 0.0, 0.0, 0.1 );
             m.diffuse   = Color( 0.05, 0.05, 0.85 );
             m.specular  = Color( 1.0, 1.0, 1.0 );
-            m.shinyness = 6.0f;
+            m.shinyness = 3.0f;
             m.coef_diffusion  = 1.0f;
             m.coef_reflexion  = 0.0f;
             m.coef_refraction = 0.0f;
@@ -158,7 +158,7 @@ class Materiaux //utilisation des modeles informatiques des caracteristiques opt
             m.ambient   = Color( 0.0, 0.1, 0.0 );
             m.diffuse   = Color( 0.05, 0.85, 0.05 );
             m.specular  = Color( 1.0, 1.0, 1.0 );
-            m.shinyness = 6.0f;
+            m.shinyness = 3.0f;
             m.coef_diffusion  = 1.0f;
             m.coef_reflexion  = 0.0f;
             m.coef_refraction = 0.0f;
@@ -205,6 +205,21 @@ class Materiaux //utilisation des modeles informatiques des caracteristiques opt
             m.shinyness = 6.0f;
             m.coef_diffusion  = 1.0f;
             m.coef_reflexion  = 0.0f;
+            m.coef_refraction = 0.0f;
+            m.in_refractive_index  = 1.5f;
+            m.out_refractive_index = 1.0f;
+            return m;
+        }
+
+        static Materiaux moquette_mirroir() 
+        {
+            Materiaux m;
+            m.ambient   = Color( 0.0, 0.0, 0.0 );
+            m.diffuse   = Color( 1.0, 1.0, 1.0 );
+            m.specular  = Color( 1.0, 1.0, 1.0 );
+            m.shinyness = 80.0f;
+            m.coef_diffusion  = 0.0f;
+            m.coef_reflexion  = 1.0f;
             m.coef_refraction = 0.0f;
             m.in_refractive_index  = 1.5f;
             m.out_refractive_index = 1.0f;
