@@ -5,19 +5,14 @@
 
 class Env
 {
-    public :
-        virtual Color backgroud_color(const Ray& r) = 0;
-
+public:
+    virtual Color backgroud_color(const Ray &r) = 0;
 };
 
 class BaseEnv : public Env
 {
-    public :
-        BaseEnv(){};
-        Color backgroud_color(const Ray& r)
-        {
-            return Color(0.0,0.0,0.0);
-        }
-
+public:
+    BaseEnv(){};
+    Color backgroud_color(const Ray &r);
 };
 #endif
