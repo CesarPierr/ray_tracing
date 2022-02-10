@@ -14,31 +14,35 @@ enum power_type
 class Light
 {
     static const int type = 0;
-    power_type power;
+    
 
 public:
+    power_type power;
     Color light_color;
     virtual float get_inter(const Point3 &p, Vector3 &L, Color &c) = 0;
     virtual float get_inter_ray(const Ray &r, Point3 p) = 0;
+
     virtual Color get_color(const Point3 &p, float distance = 1)
     {
+        Color r;
         switch (power)
         {
         case low_dispersion:
-            return light_color * pow(1 / distance, 0.1);
+            r = light_color * powf(1 / distance, 0.2);
             break;
         case normal_dispersion:
-            return light_color * pow(1 / distance, 1);
+            r = light_color * powf(1 / distance, 0.7);
             break;
         case high_dispersion:
-            return light_color * pow(1 / distance, 5);
+            r = light_color * powf(1 / distance, 2);
             break;
         case uniform:
-            return light_color;
+            r = light_color;
             break;
         default:
-            return light_color;
+            r = light_color;
         }
+        return r;
     }
 };
 

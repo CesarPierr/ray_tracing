@@ -1,6 +1,6 @@
 #include "viewer.hpp"
 
-Screen::Screen() : width(1920), height(1080)
+Screen::Screen()
 {
     (*this).reserve(width * height);
 };
@@ -24,7 +24,7 @@ void Screen::Render()
             {
                 (*this)[nb_pixel(x, y)] = get_color(x, y);
                 ++avancement;
-                std::cout << "avancement : " << 100 * avancement / (width * height) << " %" << std::endl;
+                //std::cout << "avancement : " << 100 * avancement / (width * height) << " %" << std::endl;
             }
         }
     }
@@ -40,11 +40,20 @@ Vector3 Screen::get_color(int x, int y)
 {
     float gx = (float)width * pixel_size / 2;
     float gy = (float)height * pixel_size / 2;
-
-    Vector3 v_dir = (distance * t - gx * b - gy * v) + x * pixel_size * b + (height - y) * pixel_size * v;
-    Ray r(pos, v_dir);
-    S.compute(r, 0);
-    return r.pix.rgb;
+    float dx,dy;
+    Vector3 c(0.0,0.0,0.0);
+    Vector3 v_dir;
+    Ray r;
+    for(int k =0; k< antialliasing; k++)
+    {
+        dx = random_double();
+        dy = random_double();
+        v_dir = (distance * t - (gx+dx) * b - (gy+dy) * v) + x * pixel_size * b + (height - y) * pixel_size * v;
+        r = Ray(pos, v_dir);
+        S.compute(r, 0);
+        c+= r.pix.rgb;
+    }
+    return c*(1/(float)antialliasing);
 }
 
 void Screen::savePicture(const std::string &filename)

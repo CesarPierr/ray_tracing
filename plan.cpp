@@ -9,11 +9,10 @@ float Plan::get_inter(const Ray &r, Point3 &test)
         return -1;
     else
     {
-        float distance_plan = -normale.dot(Pos - r.src);
-        float cos_angle = -r.dir.dot(normale) / r.dir.norm();
-        float retour = distance_plan / cos_angle;
-        test = retour * r.dir / r.dir.norm();
-        return retour;
+        float distance_plan = normale.dot(r.src-Pos);
+        float t = -distance_plan/(r.dir.dot(normale));
+        test = r.src+t*r.dir;
+        return t;
     }
 }
 
@@ -30,6 +29,5 @@ Materiaux Plan::get_mat(const Point3 &p)
 Ray Plan::get_refracted_ray(const Ray &inc_ray, const Point3 &p, const Vector3 &get_normale)
 {
     Ray r;
-    r.puissance = 0;
     return r;
 }

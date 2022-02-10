@@ -4,6 +4,7 @@
 #include "light.hpp"
 #include "environnement.hpp"
 #include <vector>
+#include <random>
 class Scene
 {
 private:
@@ -11,7 +12,7 @@ private:
     std::vector<Objet *> l_objets;
     std::vector<Light *> l_lumieres;
     Env *environnement;
-    int prof_max = 2;
+    int prof_max = 3;
 
 public:
     Scene() : nb_objet(0),

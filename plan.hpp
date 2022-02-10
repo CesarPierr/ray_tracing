@@ -15,6 +15,8 @@ public:
 
     Vector3 get_normal(const Point3 &inter);
 
+    bool ray_in(const Ray & r) {return false;}
+
     Materiaux get_mat(const Point3 &p);
 
     Ray get_refracted_ray(const Ray &inc_ray, const Point3 &p, const Vector3 &get_normale);

@@ -8,13 +8,13 @@
 int main()
 {
 
-    Sphere S1(Point3(26.0, 4.0, 4.0), 3, Materiaux().emerald_green());
-    Sphere S2(Point3(18.0, -2.0, 0.0), 3, Materiaux().glass());
-    Sphere S3(Point3(18.0, 4.0, -4), 3, Materiaux().emerald_red());
+    Sphere S1(Point3(26.0, 4.0, 4.0), 3, Materiaux().glass());
+    Sphere S2(Point3(35.0, -2.0, 0.0), 3, Materiaux().emerald_green());
+    Sphere S3(Point3(35.0, 4.0, -4), 3, Materiaux().emerald_red());
 
-    Plan P(Point3(0.0, -5.0, 0.0), Vector3(0.0, 1.0, 0.0), Materiaux().moquette_mirroir());
-    Plan P_devant(Point3(40.0, 0.0, 0.0), Vector3(-1.0, 0.0, 0.0), Materiaux().moquette_jaune());
-    Plan P_gauche(Point3(0.0, 0.0, -12.0), Vector3(0.0, 0.0, 1.0), Materiaux().moquette_bleue());
+    Plan P(Point3(0.0, -5.0, 0.0), Vector3(0.0, 1.0, 0.0), Materiaux().moquette_moche());
+    Plan P_devant(Point3(45.0, 0.0, 0.0), Vector3(-1.0, 0.0, 0.0), Materiaux().moquette_jaune());
+    Plan P_gauche(Point3(0.0, 0.0, -12.0), Vector3(0.0, 0.0, 1.0), Materiaux().moquette_mirroir());
     Plan P_droite(Point3(13.0, 12.0, 12.0), Vector3(0.0, 0.0, -1.0), Materiaux().moquette_rouge());
     Plan P_haut(Point3(8.0, 8.0, 12.0), Vector3(0.0, -1.0, 0.0), Materiaux().moquette_blanche());
     Plan P_derriere(Point3(-5.0, 8.0, 12.0), Vector3(1.0, 0.0, 0.0), Materiaux().moquette_moche());
@@ -24,8 +24,8 @@ int main()
     Scene S;
 
     S.add_object(S1);
-    // S.add_object(S2);
-    // S.add_object(S3);
+    S.add_object(S2);
+    S.add_object(S3);
     S.add_object(P);
     S.add_object(P_devant);
     S.add_object(P_gauche);

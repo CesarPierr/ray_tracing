@@ -7,7 +7,6 @@ class Buble_light : public Light
 public:
     Point3 centre;
     float rayon;
-    power_type normal_dispersion;
 
     Buble_light();
 

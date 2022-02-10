@@ -1,5 +1,19 @@
 #include "scene.hpp"
 
+float reflectance(float cosine, float ref_idx) 
+{
+// Use Schlick's approximation for reflectance.
+    auto r0 = (1-ref_idx) / (1+ref_idx);
+    r0 = r0*r0;
+    return r0 + (1-r0)*pow((1 - cosine),5);
+}
+
+float random_float(float max) {
+    static std::uniform_real_distribution<float> distribution(0,max);
+    static std::mt19937 generator;
+    return distribution(generator);
+}
+
 void Scene::add_object(Objet &obj)
 {
     l_objets.push_back(&obj);
@@ -73,7 +87,7 @@ Color Scene::get_PON(const Point3 &pt, const Vector3 &normale, const Materiaux &
         {
             r = Ray(pt, L);
             shadowed = inter_shadow(r, distance);
-            retour += (col_lum * m.specular * phongTerm + col_lum * m.diffuse * k * m.coef_diffusion) * shadowed;
+            retour += (col_lum * m.specular * phongTerm+ col_lum * m.diffuse * k * m.coef_diffusion) * shadowed;
         }
     }
 
@@ -105,7 +119,7 @@ void Scene::compute(Ray &r, int prof)
     else
     {
         // usefull variables for the recursive ray tracing algorithm
-        Point3 pt_inter;
+        Point3 pt_inter(0.0,0.0,0.0);
         Vector3 normale;
         Ray r_reflexion, r_transmission;
         Materiaux m;
@@ -126,17 +140,35 @@ void Scene::compute(Ray &r, int prof)
             case 1:
                 Objet &current_obj = *l_objets[no_obj];
                 normale = current_obj.get_normal(pt_inter);
-                normale /= normale.norm();
                 m = current_obj.get_mat(pt_inter);
+
                 Color diffuse_spec = get_PON(pt_inter, normale, m, r);
                 // load the reflected ray
-                r_reflexion = current_obj.get_reflected_ray(r, pt_inter, normale);
-                r_transmission = current_obj.get_refracted_ray(r, pt_inter, normale);
-                compute(r_reflexion, prof + 1);
-                // load the refracted ray
-                // compute(r_transmission, prof+1);
+                float refraction_ratio = current_obj.ray_in(r)? m.in_refractive_index/m.out_refractive_index : m.out_refractive_index/m.in_refractive_index;
+                float sin_theta = std::sqrt(1- pow(normale.dot(r.dir),2)); 
+    
 
-                r.pix = 0.2 * m.ambient + diffuse_spec + m.coef_reflexion * r_reflexion.pix; //+m.coef_refraction*r_transmission.pix
+                if (refraction_ratio * sin_theta > 1.0 )
+                {
+                    r_reflexion = current_obj.get_reflected_ray(r, pt_inter, normale);
+                    compute(r_reflexion, prof + 1);
+                    r.pix = 0.2 * m.ambient + diffuse_spec + (m.coef_reflexion) * r_reflexion.pix;
+                } 
+                else 
+                {
+                    // Can Refract
+                    r_reflexion = current_obj.get_reflected_ray(r, pt_inter, normale);
+                    r_transmission = current_obj.get_refracted_ray(r, pt_inter, normale);
+                    compute(r_reflexion, prof + 1);
+                    // load the refracted ray
+                    compute(r_transmission, prof+1);
+                    r.pix = 0.2 * m.ambient + diffuse_spec + (m.coef_reflexion) * r_reflexion.pix+(m.coef_refraction)*r_transmission.pix ;
+                }
+                
+                
+                
+                
+            
                 break;
             }
         }

@@ -1,12 +1,12 @@
 #include "buble_light.hpp"
 
-Buble_light::Buble_light() : centre(Point3(0.0, 0.0, 0.0)), rayon(1) {}
+Buble_light::Buble_light() : centre(Point3(0.0, 0.0, 0.0)), rayon(1) {power = normal_dispersion;}
 
-Buble_light::Buble_light(Point3 c, float r) : centre(c), rayon(r) {}
+Buble_light::Buble_light(Point3 c, float r) : centre(c), rayon(r) {power = normal_dispersion;}
 
 float Buble_light::get_inter(const Point3 &p, Vector3 &L, Color &c)
 {
-    L = centre - p;
+    L = centre-p;
     float distance = L.norm();
     L /= L.norm();
     c = get_color(p, distance);
