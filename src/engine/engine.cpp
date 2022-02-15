@@ -1,11 +1,8 @@
 #include "engine/engine.hpp"
 
-Engine::Engine()
-{
-    (*this).reserve(width * height);
-};
+Engine::Engine(){};
 
-Engine::Engine(int w, int h) : width(w), height(h) { (*this).reserve(w * h); };
+Engine::Engine(int w, int h) : width(w), height(h){};
 
 int Engine::nb_pixel(int x, int y)
 {
@@ -25,16 +22,16 @@ Vector3 Engine::get_color(int x, int y)
     Vector3 c(0.0, 0.0, 0.0);
     Vector3 v_dir;
     Ray r;
-    for (int k = 0; k < antialliasing; k++)
+    for (int k = 0; k < aa; k++)
     {
         dx = random_double();
         dy = random_double();
         v_dir = (distance * t - (gx + dx) * b - (gy + dy) * v) + x * pixel_size * b + (height - y) * pixel_size * v;
         r = Ray(pos, v_dir);
-        S.compute(r, 0);
+        S.compute(r, 0, prof_max);
         c += r.pix.rgb;
     }
-    return c * (1 / (float)antialliasing);
+    return c * (1 / (float)aa);
 }
 
 void Engine::savePicture(const std::string &filename)
@@ -67,11 +64,14 @@ void Engine::set_scene(Scene &scene)
 void Engine::get_xml(pugi::xml_node sc)
 {
     Materiaux m;
+    int ratio = std::atoi(sc.attribute("ratio").value());
     width = std::atoi(sc.attribute("width").value());
     height = std::atoi(sc.attribute("heigh").value());
+    this->reserve(width * height);
     pixel_size = std::atof(sc.attribute("pixel_size").value());
 
     distance = atof(sc.child("distance_from_screen").child_value());
+    distance = distance * sqrt((double)(width * height) / (double)(1920 * 1080));
     auto posi = sc.child("pos_viewer");
     float x = std::atof(posi.child("x").child_value());
     float y = std::atof(posi.child("y").child_value());
@@ -95,5 +95,7 @@ void Engine::get_xml(pugi::xml_node sc)
     x = std::atof(u3.child("x").child_value());
     y = std::atof(u3.child("y").child_value());
     z = std::atof(u3.child("z").child_value());
+    aa = std::atoi(sc.child("antialliasing").child_value());
+    prof_max = std::atoi(sc.child("prof_max").child_value());
     b = Vector3(x, y, z);
 }

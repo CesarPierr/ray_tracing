@@ -19,7 +19,7 @@ public:
 
     virtual Ray get_refracted_ray(const Ray &inc_ray, Point3 p, const Vector3 &normale)
     {
-        std::cout << p << std::endl;
+        // std::cout << p << std::endl;
         if (ray_in(inc_ray))
         {
             float eta = mat.in_refractive_index / mat.out_refractive_index;

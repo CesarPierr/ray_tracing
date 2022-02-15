@@ -48,6 +48,21 @@ public:
         return m;
     }
 
+    static Materiaux buble()
+    {
+        Materiaux m;
+        m.ambient = Color(0.1f, 0.1f, 0.1f);
+        m.diffuse = Color(0.50f, 0.50f, 0.50f);
+        m.specular = Color(1.0, 1.0, 1.0);
+        m.shinyness = 150.0f;
+        m.coef_diffusion = 0.0f;
+        m.coef_reflexion = 0.1f;
+        m.coef_refraction = 0.9f;
+        m.in_refractive_index = 1.0f;
+        m.out_refractive_index = 1.0f;
+        return m;
+    }
+
     static Materiaux bronze()
     {
         Materiaux m;
@@ -255,6 +270,8 @@ public:
             return Materiaux().moquette_rouge();
         else if (strcmp(name, "moquette_mirroir") == 0)
             return Materiaux().moquette_mirroir();
+        else if (strcmp(name, "buble") == 0)
+            return Materiaux().buble();
         else
             return Materiaux().moquette_blanche();
     }

@@ -25,7 +25,13 @@ Materiaux Plan::get_mat(const Point3 &p)
 {
     return mat;
 }
-
+Ray Plan::get_refracted_ray(const Ray &inc_ray, Point3 p, const Vector3 &normale)
+{
+    // std::cout << p << std::endl;
+    Ray refract(inc_ray);
+    refract.src += 0.01f * inc_ray.dir;
+    return refract;
+}
 void Plan::get_xml(pugi::xml_node pl)
 {
     pugi::xml_node position = pl.child("centre");

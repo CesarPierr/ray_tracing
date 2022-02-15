@@ -1,7 +1,7 @@
 <RayTracerData >
 
     <environnement>base</environnement>
-    <Screen width="1920" heigh = "1080" pixel_size = "0.001">
+    <engine width="1920" heigh = "1080" pixel_size = "0.001">
         <distance_from_screen>1.0</distance_from_screen>
         <pos_viewer>
             <x>0.0</x>
@@ -25,8 +25,11 @@
                 <z>1.0</z>
             </w>
         </vector_base>
+        <nthread>8</nthread>
+        <antialliasing>4</antialliasing>
+        <prof_max>5</prof_max>
 
-    </Screen>
+    </engine>
     
     <l_objets name = "V1">
         <Objet name= "S1" type ="Sphere">
@@ -36,7 +39,7 @@
                 <z>4.0</z>
             </centre>
             <rayon>3.0</rayon>
-            <Materiaux>glass</Materiaux>
+            <Materiaux>bronze</Materiaux>
         </Objet>
 
         <Objet name="S2" type ="Sphere">
@@ -58,6 +61,7 @@
             <rayon>3.0</rayon>
             <Materiaux>emerald_red</Materiaux>
         </Objet>
+
 
         <Objet name="P_sol" type = "Plan">
             <centre>

@@ -1,28 +1,26 @@
-#ifndef VIEWER_HPP
-#define VIEWER_HPP
+#ifndef ENGINE_HPP
+#define ENGINE_HPP
 #include "utils/pointlight.hpp"
 #include "scene.hpp"
 #include "utils/bitmap_image.hpp"
 #include "xml/pugixml.hpp"
-#include <omp.h>
 #include <random>
-#define RATIO 1
-#define AA 1
 
 class Engine : public std::vector<Vector3>
 {
 
 protected:
     // configuration de base
-    int width = 1980 / RATIO;
-    int height = 1080 / RATIO;
+    int prof_max;
+    int width;
+    int height;
     Scene S;
-    int antialliasing = AA;
-    Point3 pos = Point3(0.0, 0.0, 0.0);
-    float distance = 1.0 / RATIO;
-    float pixel_size = 0.001;
+    int aa;
+    Point3 pos;
+    float distance;
+    float pixel_size;
     // base de la matrice de pixel dans l'espace (plan v,b et t direction de regard)
-    Vector3 t = Vector3(1.0, 0.0, 0.0), v = Vector3(0.0, 1.0, 0.0), b = Vector3(0.0, 0.0, 1.0);
+    Vector3 t, v, b;
 
 public:
     Engine();

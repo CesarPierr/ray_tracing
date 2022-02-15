@@ -101,10 +101,10 @@ float Scene::inter_shadow(const Ray &r, float distance_light)
     return retour;
 }
 
-void Scene::compute(Ray &r, int prof)
+void Scene::compute(Ray &r, int prof, int profmax)
 {
     // std::cout << r.src << std::endl;
-    if (prof > prof_max)
+    if (prof > profmax)
         r.pix = Color(0.0, 0.0, 0.0);
     else
     {
@@ -140,7 +140,7 @@ void Scene::compute(Ray &r, int prof)
                 if (refraction_ratio * sin_theta > 1.0)
                 {
                     r_reflexion = current_obj.get_reflected_ray(r, pt_inter, normale);
-                    compute(r_reflexion, prof + 1);
+                    compute(r_reflexion, prof + 1, profmax);
                     r.pix = 0.2 * m.ambient + diffuse_spec + (m.coef_reflexion) * r_reflexion.pix;
                 }
                 else
@@ -150,7 +150,7 @@ void Scene::compute(Ray &r, int prof)
                     {
                         r_reflexion = current_obj.get_reflected_ray(r, pt_inter, normale);
                         r_transmission.puissance = r.puissance * m.coef_reflexion;
-                        compute(r_reflexion, prof + 1);
+                        compute(r_reflexion, prof + 1, profmax);
                     }
                     else
                     {
@@ -160,7 +160,7 @@ void Scene::compute(Ray &r, int prof)
                     {
                         r_transmission = current_obj.get_refracted_ray(r, pt_inter, normale);
                         r_transmission.puissance = r.puissance * m.coef_refraction;
-                        compute(r_transmission, prof + 1);
+                        compute(r_transmission, prof + 1, profmax);
                     }
                     else
                     {
