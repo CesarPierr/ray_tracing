@@ -20,8 +20,6 @@ public:
 
     Materiaux get_mat(const Point3 &p);
 
-    Ray get_refracted_ray(const Ray &inc_ray, const Point3 &p, const Vector3 &get_normale);
-
     void get_xml(pugi::xml_node pl);
 };
 #endif

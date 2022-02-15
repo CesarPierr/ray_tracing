@@ -1,13 +1,13 @@
 
-#include "viewer.hpp"
+#include "engine/base_engine.hpp"
 #include "xml/xml_loader.hpp"
 
 int main()
 {
-    Screen screen;
+    BaseEngine engine;
     char name[9] = "data.xml";
 
-    if (load_xml(screen, name) == -1)
+    if (load_xml(engine, name) == -1)
     {
         std::cout << "error : unable to load the scene" << std::endl;
         return EXIT_FAILURE;
@@ -39,13 +39,8 @@ int main()
     S.set_env(env);*/
 
     //    screen.pos = Point3(0.0, 0.0, 0.0);
-    std::cout << screen.S.l_objets.size() << std::endl;
-    for (int i = 0; i < screen.S.l_lumieres.size(); i++)
-    {
-        std::cout << screen.S.l_lumieres[i] << std::endl;
-    }
 
-    screen.Render();
+    engine.Render();
 
     return EXIT_SUCCESS;
 }

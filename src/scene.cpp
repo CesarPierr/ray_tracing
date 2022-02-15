@@ -39,12 +39,11 @@ int Scene::inter(Point3 &pt_inter, const Ray &r, int &type)
             type = 1;
         }
     }
-
     for (int i = 0; i < nb_light; i++)
     {
         Vector3 L;
         Color c;
-        d_int = (*l_lumieres[i]).get_inter_ray(r, test);
+        d_int = l_lumieres[i]->get_inter_ray(r, test);
         if (d_int != -1 && (d_int < distance || distance == -1))
         {
             pt_inter = test;
@@ -104,6 +103,7 @@ float Scene::inter_shadow(const Ray &r, float distance_light)
 
 void Scene::compute(Ray &r, int prof)
 {
+    // std::cout << r.src << std::endl;
     if (prof > prof_max)
         r.pix = Color(0.0, 0.0, 0.0);
     else
@@ -146,12 +146,30 @@ void Scene::compute(Ray &r, int prof)
                 else
                 {
                     // Can Refract
-                    r_reflexion = current_obj.get_reflected_ray(r, pt_inter, normale);
-                    r_transmission = current_obj.get_refracted_ray(r, pt_inter, normale);
-                    compute(r_reflexion, prof + 1);
-                    // load the refracted ray
-                    compute(r_transmission, prof + 1);
-                    r.pix = 0.2 * m.ambient + diffuse_spec + (m.coef_reflexion) * r_reflexion.pix + (m.coef_refraction) * r_transmission.pix;
+                    if (r.puissance * m.coef_reflexion > 0.05)
+                    {
+                        r_reflexion = current_obj.get_reflected_ray(r, pt_inter, normale);
+                        r_transmission.puissance = r.puissance * m.coef_reflexion;
+                        compute(r_reflexion, prof + 1);
+                    }
+                    else
+                    {
+                        r_reflexion.pix = Color(0.0, 0.0, 0.0);
+                    }
+                    if (r.puissance * m.coef_refraction > 0.05)
+                    {
+                        r_transmission = current_obj.get_refracted_ray(r, pt_inter, normale);
+                        r_transmission.puissance = r.puissance * m.coef_refraction;
+                        compute(r_transmission, prof + 1);
+                    }
+                    else
+                    {
+                        r_transmission.pix = Color(0.0, 0.0, 0.0);
+                    }
+
+                    //  load the refracted ray
+
+                    r.pix = 0.2 * m.ambient + diffuse_spec + (m.coef_refraction) * r_transmission.pix + (m.coef_reflexion) * r_reflexion.pix;
                 }
 
                 break;

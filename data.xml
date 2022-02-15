@@ -36,7 +36,7 @@
                 <z>4.0</z>
             </centre>
             <rayon>3.0</rayon>
-            <Materiaux>moquette_mirroir</Materiaux>
+            <Materiaux>glass</Materiaux>
         </Objet>
 
         <Objet name="S2" type ="Sphere">

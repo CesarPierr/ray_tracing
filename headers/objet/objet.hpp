@@ -17,16 +17,17 @@ public:
 
     virtual void get_xml(pugi::xml_node obj) = 0;
 
-    virtual Ray get_refracted_ray(const Ray &inc_ray, const Point3 &p, Vector3 &normale)
+    virtual Ray get_refracted_ray(const Ray &inc_ray, Point3 p, const Vector3 &normale)
     {
+        std::cout << p << std::endl;
         if (ray_in(inc_ray))
         {
             float eta = mat.in_refractive_index / mat.out_refractive_index;
             float c1 = -normale.dot(inc_ray.dir);
             float c2 = std::sqrt(1 - eta * eta * (1 - c1 * c1));
             Vector3 dir = eta * inc_ray.dir - (eta * c1 - c2) * normale;
-            Ray ret(p, dir);
-            return ret;
+            Ray refract(p + dir * 0.01f, dir);
+            return refract;
         }
         else
         {
@@ -34,8 +35,8 @@ public:
             float c1 = normale.dot(inc_ray.dir);
             float c2 = std::sqrt(1 - eta * eta * (1 - c1 * c1));
             Vector3 dir = eta * inc_ray.dir + (eta * c1 - c2) * normale;
-            Ray ret(p, dir);
-            return ret;
+            Ray refract(p + dir * 0.01f, dir);
+            return refract;
         }
     }
     virtual Ray get_reflected_ray(const Ray &inc_ray, Point3 p, const Vector3 &normale)

@@ -8,7 +8,8 @@ public:
     Point3 src;
     Vector3 dir;
     Color pix;
-    
+    float puissance = 1;
+
     Ray();
 
     Ray(Point3 p, Vector3 d);

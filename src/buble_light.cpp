@@ -22,12 +22,15 @@ float Buble_light::get_inter_ray(const Ray &r, Point3 p)
         return distance;
     else
     {
+
         float CH2 = OC.dot(OC) - OH * OH;
-        if (CH2 > rayon * rayon)
+        if (CH2 - rayon * rayon > 0.01)
+        {
             return distance;
+        }
         else
         {
-            distance = sqrt(rayon * rayon - CH2);
+            distance = sqrt(abs(rayon * rayon - CH2));
             float t_min = std::min(OH + distance, OH - distance);
             Point3 inter = r.src + t_min * r.dir;
             p = inter;
@@ -50,5 +53,5 @@ void Buble_light::get_xml(pugi::xml_node bl)
     float b = atof(col.child("b").child_value());
     this->light_color = Color(r, g, b);
 
-    this->rayon = atof(bl.child("color").child("rayon").child_value());
+    this->rayon = atof(bl.child("rayon").child_value());
 }

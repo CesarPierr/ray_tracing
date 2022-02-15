@@ -8,13 +8,12 @@
 #include <random>
 #define RATIO 1
 #define AA 1
-#define NUM_THREADS 4
 
-class Screen : public std::vector<Vector3>
+class Engine : public std::vector<Vector3>
 {
-public:
-    int prof_max = 1;
 
+protected:
+    // configuration de base
     int width = 1980 / RATIO;
     int height = 1080 / RATIO;
     Scene S;
@@ -26,13 +25,13 @@ public:
     Vector3 t = Vector3(1.0, 0.0, 0.0), v = Vector3(0.0, 1.0, 0.0), b = Vector3(0.0, 0.0, 1.0);
 
 public:
-    Screen();
+    Engine();
 
-    Screen(int w, int h);
+    Engine(int w, int h);
 
     int nb_pixel(int x, int y);
 
-    void Render();
+    virtual void Render() = 0;
 
     void get_pixel(int x, int y, Vector3 &pix);
 
@@ -40,14 +39,16 @@ public:
 
     void savePicture(const std::string &filename);
 
+    void set_scene(Scene &scene);
+
+    virtual void get_xml(pugi::xml_node sc);
+
     inline float random_double()
     {
         static std::uniform_real_distribution<float> distribution(pixel_size / 10, pixel_size);
         static std::mt19937 generator;
         return distribution(generator);
     }
-    void set_scene(Scene &scene);
-    void get_xml(pugi::xml_node sc);
 };
 
 #endif

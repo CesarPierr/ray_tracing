@@ -1,42 +1,23 @@
-#include "viewer.hpp"
+#include "engine/engine.hpp"
 
-Screen::Screen()
+Engine::Engine()
 {
     (*this).reserve(width * height);
 };
 
-Screen::Screen(int w, int h) : width(w), height(h) { (*this).reserve(w * h); };
+Engine::Engine(int w, int h) : width(w), height(h) { (*this).reserve(w * h); };
 
-int Screen::nb_pixel(int x, int y)
+int Engine::nb_pixel(int x, int y)
 {
     return x + width * y;
 }
 
-void Screen::Render()
-{
-    int avancement = 0;
-#pragma omp parallel shared(avancement) num_threads(NUM_THREADS)
-    {
-#pragma omp for
-        for (int x = 0; x < width; x++)
-        {
-            for (int y = 0; y < height; y++)
-            {
-                (*this)[nb_pixel(x, y)] = get_color(x, y);
-                ++avancement;
-                std::cout << "avancement : " << 100 * avancement / (width * height) << " %" << std::endl;
-            }
-        }
-    }
-    savePicture("result.png");
-}
-
-void Screen::get_pixel(int x, int y, Vector3 &pix)
+void Engine::get_pixel(int x, int y, Vector3 &pix)
 {
     pix = (*this)[nb_pixel(x, y)];
 }
 
-Vector3 Screen::get_color(int x, int y)
+Vector3 Engine::get_color(int x, int y)
 {
     float gx = (float)width * pixel_size / 2;
     float gy = (float)height * pixel_size / 2;
@@ -56,7 +37,7 @@ Vector3 Screen::get_color(int x, int y)
     return c * (1 / (float)antialliasing);
 }
 
-void Screen::savePicture(const std::string &filename)
+void Engine::savePicture(const std::string &filename)
 {
     std::ofstream ofs(filename.c_str(), std::ios::out | std::ios::binary);
     ofs << "P6\n"
@@ -78,12 +59,12 @@ void Screen::savePicture(const std::string &filename)
     ofs.close();
 }
 
-void Screen::set_scene(Scene &scene)
+void Engine::set_scene(Scene &scene)
 {
     S = scene;
 }
 
-void Screen::get_xml(pugi::xml_node sc)
+void Engine::get_xml(pugi::xml_node sc)
 {
     Materiaux m;
     width = std::atoi(sc.attribute("width").value());

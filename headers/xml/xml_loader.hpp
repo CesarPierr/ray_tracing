@@ -1,11 +1,11 @@
-#include "viewer.hpp"
+#include "engine/engine.hpp"
 #include "pugixml.hpp"
 #include "objet/sphere.hpp"
 #include "objet/plan.hpp"
 #include "light/buble_light.hpp"
 using namespace pugi;
 
-int load_xml(Screen &s, char *name)
+int load_xml(Engine &eng, char *name)
 {
     Scene *scene = new Scene(); // create the empty scene
 
@@ -20,7 +20,7 @@ int load_xml(Screen &s, char *name)
     auto screen = data.child("Screen");
 
     // set the sceen parameters
-    s.get_xml(screen);
+    eng.get_xml(screen);
 
     // set the environnement
     if (strcmp("base", env) == 0)
@@ -58,6 +58,6 @@ int load_xml(Screen &s, char *name)
         }
     }
     std::cout << scene->l_objets.size() << std::endl;
-    s.set_scene(*scene);
+    eng.set_scene(*scene);
     return 0;
 }
