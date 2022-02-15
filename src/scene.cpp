@@ -15,9 +15,9 @@ float random_float(float max)
     return distribution(generator);
 }
 
-void Scene::set_env(Env &env)
+void Scene::set_env(Env *env)
 {
-    *environnement = env;
+    environnement = env;
 }
 
 int Scene::inter(Point3 &pt_inter, const Ray &r, int &type)
@@ -74,7 +74,7 @@ Color Scene::get_PON(const Point3 &pt, const Vector3 &normale, const Materiaux &
 
         if (k > 0)
         {
-            r = Ray(pt, L);
+            r = Ray(pt + 0.01f * L, L);
             shadowed = inter_shadow(r, distance);
             retour += (col_lum * m.specular * phongTerm + col_lum * m.diffuse * k * m.coef_diffusion) * shadowed;
         }
@@ -118,6 +118,7 @@ void Scene::compute(Ray &r, int prof, int profmax)
         if (no_obj == -1)
         {
             r.pix = (*environnement).backgroud_color(r);
+            std::cout << no_obj << std::endl;
         }
 
         else

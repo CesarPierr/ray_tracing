@@ -42,6 +42,7 @@ public:
     virtual Ray get_reflected_ray(const Ray &inc_ray, Point3 p, const Vector3 &normale)
     {
         Vector3 dir_reflec = inc_ray.dir - (2 * normale.dot(inc_ray.dir) * normale);
+        p += 0.05f * dir_reflec; // avoid calcul error
         Ray reflec(p, dir_reflec);
         return reflec;
     }

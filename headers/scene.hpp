@@ -38,7 +38,7 @@ public:
 
     void add_light(Light &light);
 
-    void set_env(Env &env);
+    void set_env(Env *env);
 
     int inter(Point3 &pt_inter, const Ray &r, int &type);
 

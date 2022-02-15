@@ -132,7 +132,7 @@ public:
         m.specular = Color(0.0, 0.0, 0.0);
         m.shinyness = 80.0f;
         m.coef_diffusion = 0.01f;
-        m.coef_reflexion = 0.00f;
+        m.coef_reflexion = 0.06f;
         m.coef_refraction = 0.80f;
         m.in_refractive_index = 1.5f;
         m.out_refractive_index = 1.0f;

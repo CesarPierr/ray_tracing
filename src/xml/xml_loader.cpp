@@ -21,7 +21,12 @@ int load_xml(Engine &eng, char *name)
     if (strcmp("base", env) == 0)
     {
         BaseEnv *env = new BaseEnv();
-        scene->set_env(*env);
+        scene->set_env(env);
+    }
+    else
+    {
+        BaseEnv *env = new BaseEnv();
+        scene->set_env(env);
     }
 
     // add objets and light to the scene

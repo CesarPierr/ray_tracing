@@ -26,8 +26,8 @@
             </w>
         </vector_base>
         <nthread>8</nthread>
-        <antialliasing>4</antialliasing>
-        <prof_max>5</prof_max>
+        <antialliasing>3</antialliasing>
+        <prof_max>3</prof_max>
 
     </engine>
     
@@ -39,7 +39,7 @@
                 <z>4.0</z>
             </centre>
             <rayon>3.0</rayon>
-            <Materiaux>bronze</Materiaux>
+            <Materiaux>moquette_mirroir</Materiaux>
         </Objet>
 
         <Objet name="S2" type ="Sphere">
@@ -76,6 +76,7 @@
             </normale>
             <Materiaux>moquette_moche</Materiaux>
         </Objet>
+
 
         <Objet name="P_devant" type = "Plan">
             <centre>
