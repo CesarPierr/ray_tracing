@@ -38,7 +38,7 @@ public:
         Materiaux m;
         m.ambient = Color(0.1f, 0.0f, 0.0f);
         m.diffuse = Color(0.85f, 0.05f, 0.05f);
-        m.specular = Color(1.0, 0.8, 0.8);
+        m.specular = Color(0.85f, 0.05f, 0.05f);
         m.shinyness = 5.0f;
         m.coef_diffusion = 1.0f;
         m.coef_reflexion = 0.05f;
@@ -144,7 +144,7 @@ public:
         Materiaux m;
         m.ambient = Color(0.05, 0.1, 0.01);
         m.diffuse = Color(0.35, 0.35, 0.35);
-        m.specular = Color(1.0, 1.0, 1.0);
+        m.specular = 0.5f * Color(1.0, 1.0, 1.0);
         m.shinyness = 255.0f;
         m.coef_diffusion = 1.0f;
         m.coef_reflexion = 0.0f;
@@ -173,7 +173,7 @@ public:
         Materiaux m;
         m.ambient = Color(0.0, 0.1, 0.0);
         m.diffuse = Color(0.05, 0.85, 0.05);
-        m.specular = Color(1.0, 1.0, 1.0);
+        m.specular = 0.5f * Color(1.0, 1.0, 1.0);
         m.shinyness = 255.0f;
         m.coef_diffusion = 0.7f;
         m.coef_reflexion = 0.0f;
@@ -203,8 +203,8 @@ public:
         Materiaux m;
         m.ambient = Color(0.1, 0.1, 0.1);
         m.diffuse = Color(0.85, 0.85, 0.85);
-        m.specular = Color(1.0, 1.0, 1.0);
-        m.shinyness = 6.0f;
+        m.specular = 0.5f * Color(1.0, 1.0, 1.0);
+        m.shinyness = 255.0f;
         m.coef_diffusion = 0.7f;
         m.coef_reflexion = 0.0f;
         m.coef_refraction = 0.0f;

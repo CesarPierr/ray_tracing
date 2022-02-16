@@ -6,7 +6,7 @@ Plan::Plan(Point3 p, Vector3 v, Materiaux m) : Pos(p), normale(v) { mat = m; }
 float Plan::get_inter(const Ray &r, Point3 &test)
 {
     Point3 projete = r.src - normale.dot(r.src - Pos) * normale;
-    if (r.dir.dot(projete - r.src) < 0 || std::abs(normale.dot(r.dir)) <= 0.1)
+    if (r.dir.dot(projete - r.src) < 0 || std::abs(normale.dot(r.dir)) <= 0.1 || (projete - r.src).norm() <= 0.001f)
     {
         // std::cout << "salut" << std::endl;
         return -1;

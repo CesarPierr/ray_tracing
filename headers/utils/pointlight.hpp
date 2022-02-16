@@ -9,6 +9,7 @@ public:
     Vector3 dir;
     Color pix;
     float puissance = 1;
+    int has_been_reflected = -1;
 
     Ray();
 

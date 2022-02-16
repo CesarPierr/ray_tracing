@@ -29,6 +29,8 @@ int Scene::inter(Point3 &pt_inter, const Ray &r, int &type)
 
     for (int i = 0; i < nb_objet; i++)
     {
+        if (r.has_been_reflected == i)
+            continue;
         d_int = l_objets[i]->get_inter(r, test);
 
         if (d_int != -1 && (d_int < distance || distance == -1))
@@ -74,7 +76,8 @@ Color Scene::get_PON(const Point3 &pt, const Vector3 &normale, const Materiaux &
 
         if (k > 0)
         {
-            r = Ray(pt + 0.01f * L, L);
+            r = Ray(pt, L);
+            r.has_been_reflected = viewRay.has_been_reflected;
             shadowed = inter_shadow(r, distance);
             retour += (col_lum * m.specular * phongTerm + col_lum * m.diffuse * k * m.coef_diffusion) * shadowed;
         }
@@ -93,7 +96,10 @@ float Scene::inter_shadow(const Ray &r, float distance_light)
         if (d >= distance_light || d < 0)
             continue;
         else
+        {
+            // std::cout << r.src << " " << d << " " << i << " " << r.has_been_reflected << std::endl;
             retour *= (*l_objets[i]).mat.coef_refraction;
+        }
 
         if (retour == 0)
             break;
@@ -103,7 +109,6 @@ float Scene::inter_shadow(const Ray &r, float distance_light)
 
 void Scene::compute(Ray &r, int prof, int profmax)
 {
-    // std::cout << r.src << std::endl;
     if (prof > profmax)
         r.pix = Color(0.0, 0.0, 0.0);
     else
@@ -132,7 +137,7 @@ void Scene::compute(Ray &r, int prof, int profmax)
                 Objet &current_obj = *l_objets[no_obj];
                 normale = current_obj.get_normal(pt_inter);
                 m = current_obj.get_mat(pt_inter);
-
+                r.has_been_reflected = no_obj;
                 Color diffuse_spec = get_PON(pt_inter, normale, m, r);
                 // load the reflected ray
                 float refraction_ratio = current_obj.ray_in(r) ? m.in_refractive_index / m.out_refractive_index : m.out_refractive_index / m.in_refractive_index;
@@ -151,6 +156,7 @@ void Scene::compute(Ray &r, int prof, int profmax)
                     {
                         r_reflexion = current_obj.get_reflected_ray(r, pt_inter, normale);
                         r_transmission.puissance = r.puissance * m.coef_reflexion;
+                        r_reflexion.has_been_reflected = no_obj;
                         compute(r_reflexion, prof + 1, profmax);
                     }
                     else

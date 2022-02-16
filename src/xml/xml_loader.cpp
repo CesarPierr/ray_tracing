@@ -22,7 +22,7 @@ int load_xml(Engine &eng, char *name)
     {
         BaseEnv *env = new BaseEnv();
         scene->set_env(env);
-    }
+        }
     else
     {
         BaseEnv *env = new BaseEnv();

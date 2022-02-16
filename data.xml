@@ -4,7 +4,7 @@
     <engine width="1920" heigh = "1080" pixel_size = "0.001">
         <distance_from_screen>1.0</distance_from_screen>
         <pos_viewer>
-            <x>0.0</x>
+            <x>-4.0</x>
             <y>0.0</y>
             <z>0.0</z>
         </pos_viewer>
@@ -117,7 +117,7 @@
                 <v>0</v>
                 <w>-1.0</w>
             </normale>
-            <Materiaux>moquette_rouge</Materiaux>
+            <Materiaux>moquette_mirroir</Materiaux>
         </Objet>
 
         <Objet name = "P_haut" type = "Plan">

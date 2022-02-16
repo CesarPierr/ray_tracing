@@ -26,7 +26,7 @@ public:
             float c1 = -normale.dot(inc_ray.dir);
             float c2 = std::sqrt(1 - eta * eta * (1 - c1 * c1));
             Vector3 dir = eta * inc_ray.dir - (eta * c1 - c2) * normale;
-            Ray refract(p + dir * 0.01f, dir);
+            Ray refract(p + 0.001f * dir, dir);
             return refract;
         }
         else
@@ -35,15 +35,15 @@ public:
             float c1 = normale.dot(inc_ray.dir);
             float c2 = std::sqrt(1 - eta * eta * (1 - c1 * c1));
             Vector3 dir = eta * inc_ray.dir + (eta * c1 - c2) * normale;
-            Ray refract(p + dir * 0.01f, dir);
+            Ray refract(p + 0.001f * dir, dir);
             return refract;
         }
     }
     virtual Ray get_reflected_ray(const Ray &inc_ray, Point3 p, const Vector3 &normale)
     {
         Vector3 dir_reflec = inc_ray.dir - (2 * normale.dot(inc_ray.dir) * normale);
-        p += 0.05f * dir_reflec; // avoid calcul error
         Ray reflec(p, dir_reflec);
+        // std::cout << "salit" << std::endl;
         return reflec;
     }
 };

@@ -29,7 +29,7 @@ public:
         switch (power)
         {
         case low_dispersion:
-            r = light_color * powf(1 / distance, 0.4);
+            r = light_color * powf(1 / distance, 0.5);
             break;
         case normal_dispersion:
             r = light_color * powf(1 / distance, 0.7);
