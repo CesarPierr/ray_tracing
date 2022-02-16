@@ -5,8 +5,9 @@
 sur ubuntu : 
 ```console 
 sudo apt install build-essential 
+sudo apt-get install libomp-dev
 ```
-(install g++ et les librairies de base necessaires)
+(install g++ et les librairies de base necessaires + openmp)
 ## Compilation
 
 ```console
