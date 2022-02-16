@@ -2,8 +2,11 @@
 
 ## Dependances
 
-normalement aucune (avoir g++)
-
+sur ubuntu : 
+```console 
+sudo apt install build-essential 
+```
+(install g++ et les librairies de base necessaires)
 ## Compilation
 
 ```console
