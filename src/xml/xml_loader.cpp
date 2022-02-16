@@ -53,6 +53,12 @@ int load_xml(Engine &eng, char *name)
             tr->get_xml(obj);
             scene->add_object(*tr);
         }
+        else if (strcmp(obj.attribute("type").value(), "ComplexShape") == 0)
+        {
+            ComplexShape *cs = new ComplexShape();
+            cs->get_xml(obj);
+            scene->add_object(*cs);
+        }
     }
     for (auto lum : l_lights)
     {

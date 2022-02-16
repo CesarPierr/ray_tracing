@@ -1,5 +1,6 @@
 #include "objet/complex_shape.hpp"
 
+ComplexShape::ComplexShape(){};
 float ComplexShape::get_inter(const Ray &r, Point3 &pt_inter, Vector3 &normale)
 {
     float distance = -1, d_int;
@@ -26,27 +27,19 @@ Materiaux ComplexShape::get_mat(const Point3 &p)
 {
     return in_mat;
 }
-Ray ComplexShape::get_refracted_ray(const Ray &inc_ray, Point3 p, const Vector3 &normale)
+
+void ComplexShape::get_xml(pugi::xml_node pl)
 {
-    // std::cout << p << std::endl;
-    Ray refract(inc_ray);
-    refract.src = p + 0.001f * inc_ray.dir;
-    return refract;
-}
-void ComplexShape::get_xml(pugi::xml_node pl) {}
-/*{
-    pugi::xml_node position = pl.child("centre");
-    float x = atof(position.child("x").child_value());
-    float y = atof(position.child("y").child_value());
-    float z = atof(position.child("z").child_value());
-    this->Pos = Point3(x, y, z);
-
-    pugi::xml_node normal = pl.child("normale");
-    float u = atof(normal.child("u").child_value());
-    float v = atof(normal.child("v").child_value());
-    float w = atof(normal.child("w").child_value());
-    this->normale = Vector3(u, v, w);
-
+    auto triangles = pl.child("l_triangles");
+    for (auto triangle : triangles)
+    {
+        Triangle t;
+        t.get_xml(triangle);
+        l_triangles.push_back(t);
+    }
     const char *mat_name = pl.child("Materiaux").child_value();
+
+    this->in_mat = Materiaux().get_existing_mat(mat_name);
     this->mat = Materiaux().get_existing_mat(mat_name);
-}*/
+    std::cout << in_mat.ambient.rgb << std::endl;
+}

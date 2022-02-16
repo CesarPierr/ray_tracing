@@ -40,7 +40,7 @@ Materiaux Triangle::get_mat(const Point3 &p)
 {
     return mat;
 }
-Ray Triangle::get_refracted_ray(const Ray &inc_ray, Point3 p, const Vector3 &normale)
+Ray Triangle::get_refracted_ray(const Ray &inc_ray, Point3 p, const Vector3 &normale, bool in)
 {
     // std::cout << p << std::endl;
     Ray refract(inc_ray);

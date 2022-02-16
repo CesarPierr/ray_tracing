@@ -34,14 +34,6 @@ float Sphere::get_inter(const Ray &r, Point3 &p, Vector3 &norm)
     }
 }
 
-bool Sphere::ray_in(const Ray &r)
-{
-    float distance = (r.src - centre).norm();
-    if (distance < rayon)
-        return true;
-    return false;
-}
-
 void Sphere::get_xml(pugi::xml_node sph)
 {
     pugi::xml_node position = sph.child("centre");

@@ -26,7 +26,7 @@ Materiaux Plan::get_mat(const Point3 &p)
 {
     return mat;
 }
-Ray Plan::get_refracted_ray(const Ray &inc_ray, Point3 p, const Vector3 &normale)
+Ray Plan::get_refracted_ray(const Ray &inc_ray, Point3 p, const Vector3 &normale, bool in)
 {
     // std::cout << p << std::endl;
     Ray refract(inc_ray);

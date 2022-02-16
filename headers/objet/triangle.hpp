@@ -15,11 +15,7 @@ public:
     void maj_normal();
     float get_inter(const Ray &r, Point3 &test, Vector3 &normale);
 
-    Vector3 get_normal(const Point3 &inter);
-
-    Ray get_refracted_ray(const Ray &inc_ray, Point3 p, const Vector3 &normale);
-
-    bool ray_in(const Ray &r) { return false; }
+    Ray get_refracted_ray(const Ray &inc_ray, Point3 p, const Vector3 &normale, bool in);
 
     Materiaux get_mat(const Point3 &p);
 

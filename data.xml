@@ -25,10 +25,10 @@
                 <z>1.0</z>
             </w>
         </vector_base>
-        <angle>0.5</angle>
+        <angle>-0.3</angle>
         <nthread>8</nthread>
         <antialliasing>3</antialliasing>
-        <prof_max>10</prof_max>
+        <prof_max>5</prof_max>
 
     </engine>
     
@@ -151,6 +151,25 @@
             </normale>
             <Materiaux>moquette_blanche</Materiaux>
         </Objet>
+        <!--<Objet name="t1" type= "Triangle">
+            <B>
+                <x>26.0</x>
+                <y>4.0</y>
+                <z>4.0</z>
+            </B>
+            <A>
+                <x>35.0</x>
+                <y>-2.0</y>
+                <z>0</z>
+            </A>
+            <C>
+                <x>35.0</x>
+                <y>4.0</y>
+                <z>-4.0</z>
+            </C>
+            <Materiaux>bronze</Materiaux>
+
+        </Objet> -->
 
         <Objet name = "P_derriere" type = "Plan">
             <centre>
@@ -164,6 +183,120 @@
                 <w>0</w>
             </normale>
             <Materiaux>moquette_moche</Materiaux>
+        </Objet>
+        <Objet name = "pyramide" type="ComplexShape">
+            <l_triangles>
+                <Objet name="" type= "Triangle">
+                    <A>
+                        <x>20</x>
+                        <y>-5.0</y>
+                        <z>3</z>
+                    </A>
+                    <B>
+                        <x>20</x>
+                        <y>-5.0</y>
+                        <z>6</z>
+                    </B>
+                    <C>
+                        <x>17</x>
+                        <y>-5.0</y>
+                        <z>3</z>
+                    </C>
+                    <Materiaux>emerald_green</Materiaux>
+        
+                </Objet>
+                <Objet name="" type= "Triangle">
+                    <A>
+                        <x>17</x>
+                        <y>-5.0</y>
+                        <z>6</z>
+                    </A>
+                    <B>
+                        <x>20</x>
+                        <y>-5.0</y>
+                        <z>6</z>
+                    </B>
+                    <C>
+                        <x>17</x>
+                        <y>-5.0</y>
+                        <z>3</z>
+                    </C>
+                    <Materiaux>emerald_green</Materiaux>
+                </Objet>
+                <Objet name="" type= "Triangle">
+                    <A>
+                        <x>17</x>
+                        <y>-5.0</y>
+                        <z>6</z>
+                    </A>
+                    <B>
+                        <x>18.5</x>
+                        <y>4</y>
+                        <z>4.5</z>
+                    </B>
+                    <C>
+                        <x>17</x>
+                        <y>-5.0</y>
+                        <z>3</z>
+                    </C>
+                    <Materiaux>emerald_green</Materiaux>
+                </Objet>
+                <Objet name="" type= "Triangle">
+                    <A>
+                        <x>20</x>
+                        <y>-5.0</y>
+                        <z>3</z>
+                    </A>
+                    <B>
+                        <x>20</x>
+                        <y>-5.0</y>
+                        <z>6</z>
+                    </B>
+                    <C>
+                        <x>18.5</x>
+                        <y>4</y>
+                        <z>4.5</z>
+                    </C>
+                    <Materiaux>emerald_green</Materiaux>
+                </Objet>
+                <Objet name="" type= "Triangle">
+                    <A>
+                        <x>17</x>
+                        <y>-5.0</y>
+                        <z>6</z>
+                    </A>
+                    <B>
+                        <x>20</x>
+                        <y>-5.0</y>
+                        <z>6</z>
+                    </B>
+                    <C>
+                        <x>18.5</x>
+                        <y>4</y>
+                        <z>4.5</z>
+                    </C>
+                    <Materiaux>emerald_green</Materiaux>
+                </Objet>
+                <Objet name="" type= "Triangle">
+                    <A>
+                        <x>17</x>
+                        <y>-5.0</y>
+                        <z>3</z>
+                    </A>
+                    <B>
+                        <x>20</x>
+                        <y>-5.0</y>
+                        <z>3</z>
+                    </B>
+                    <C>
+                        <x>18.5</x>
+                        <y>4</y>
+                        <z>4.5</z>
+                    </C>
+                    <Materiaux>emerald_green</Materiaux>
+                </Objet>
+            </l_triangles>
+            <Materiaux>emerald_bleue</Materiaux>
         </Objet>
         
     </l_objets>
@@ -185,7 +318,7 @@
             
         </light>
 
-        <light name = "L1" type="buble">
+        <!--<light name = "L1" type="buble">
             <position>
                 <x>10</x>
                 <y>7.0</y>
@@ -198,7 +331,7 @@
                 <b>0.7</b>
             </color>
             
-        </light>
+        </light>-->
     </l_light>
 
     

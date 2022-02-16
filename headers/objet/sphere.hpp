@@ -17,7 +17,6 @@ public:
 
     float get_inter(const Ray &r, Point3 &p, Vector3 &normale);
 
-    bool ray_in(const Ray &r);
     Materiaux get_mat(const Point3 &p)
     {
         return mat;

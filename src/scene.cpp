@@ -164,7 +164,7 @@ void Scene::compute(Ray &r, int prof, int profmax)
                     }
                     if (r.puissance * m.coef_refraction > 0.05)
                     {
-                        r_transmission = current_obj.get_refracted_ray(r, pt_inter, normale);
+                        r_transmission = current_obj.get_refracted_ray(r, pt_inter, normale, r.has_been_refracted == no_obj);
                         r_transmission.puissance = r.puissance * m.coef_refraction;
                         r_transmission.has_been_refracted = no_obj;
                         compute(r_transmission, prof + 1, profmax);
