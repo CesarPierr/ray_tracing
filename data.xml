@@ -68,7 +68,7 @@
                 <y>-2.0</y>
                 <z>-4.0</z>
             </centre>
-            <rayon>4</rayon>
+            <rayon>3</rayon>
             <Materiaux>glass</Materiaux>
         </Objet>
         <Objet name="S5" type ="Sphere">
@@ -77,7 +77,7 @@
                 <y>-2.0</y>
                 <z>-4.0</z>
             </centre>
-            <rayon>2.0</rayon>
+            <rayon>1.5</rayon>
             <Materiaux>bronze</Materiaux>
         </Objet>
 

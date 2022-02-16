@@ -38,7 +38,7 @@ void Engine::savePicture(const std::string &filename)
 {
     std::ofstream ofs;
     ofs.open(filename);
-    ofs << "P3\n"
+    ofs << "P6\n"
         << width << " " << height << "\n255\n";
 
     for (int i = 0; i < width * height; ++i)
