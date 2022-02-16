@@ -3,16 +3,16 @@
 #include "objet.hpp"
 #include "triangle.hpp"
 #include <vector>
-class Complex : public Objet
+class ComplexShape : public Objet
 {
 private:
     std::vector<Triangle> l_triangles;
+    Vector3 normale;
+    Materiaux in_mat;
 
 public:
-    Complex();
-    float get_inter(const Ray &r, Point3 &test);
-
-    Vector3 get_normal(const Point3 &inter);
+    ComplexShape();
+    float get_inter(const Ray &r, Point3 &test, Vector3 &normale);
 
     Ray get_refracted_ray(const Ray &inc_ray, Point3 p, const Vector3 &normale);
 

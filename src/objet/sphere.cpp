@@ -6,14 +6,7 @@ Sphere::Sphere(Point3 c, float r) : centre(c), rayon(r){};
 
 Sphere::Sphere(Point3 c, float r, Materiaux m) : centre(c), rayon(r) { (*this).mat = m; };
 
-Vector3 Sphere::get_normal(const Point3 &inter)
-{
-    Vector3 n = inter - centre;
-
-    return n * (1 / n.norm());
-}
-
-float Sphere::get_inter(const Ray &r, Point3 &p)
+float Sphere::get_inter(const Ray &r, Point3 &p, Vector3 &norm)
 {
     float distance = -1;
     Vector3 OC = centre - r.src;
@@ -33,6 +26,8 @@ float Sphere::get_inter(const Ray &r, Point3 &p)
                 t_min = std::max(OH + distance, OH - distance);
             t_min += 0.01;
             Point3 inter = r.src + t_min * r.dir;
+            norm = inter - centre;
+            norm *= (1 / norm.norm());
             p = inter;
             return t_min;
         }

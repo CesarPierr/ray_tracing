@@ -13,7 +13,7 @@ public:
     Triangle(Point3 a, Point3 b, Point3 c);
     Triangle(Point3 a, Point3 b, Point3 c, Materiaux m);
     void maj_normal();
-    float get_inter(const Ray &r, Point3 &test);
+    float get_inter(const Ray &r, Point3 &test, Vector3 &normale);
 
     Vector3 get_normal(const Point3 &inter);
 

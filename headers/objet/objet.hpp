@@ -10,8 +10,7 @@ class Objet
 public:
     Materiaux mat;
 
-    virtual float get_inter(const Ray &r, Point3 &test) = 0;
-    virtual Vector3 get_normal(const Point3 &inter) = 0;
+    virtual float get_inter(const Ray &r, Point3 &test, Vector3 &normale) = 0;
     virtual Materiaux get_mat(const Point3 &p) = 0;
     virtual bool ray_in(const Ray &r) = 0;
 
@@ -42,7 +41,7 @@ public:
     virtual Ray get_reflected_ray(const Ray &inc_ray, Point3 p, const Vector3 &normale)
     {
         Vector3 dir_reflec = inc_ray.dir - (2 * normale.dot(inc_ray.dir) * normale);
-        Ray reflec(p, dir_reflec);
+        Ray reflec(p + 0.001f * dir_reflec, dir_reflec);
         // std::cout << "salit" << std::endl;
         return reflec;
     }

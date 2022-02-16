@@ -20,23 +20,20 @@ void Scene::set_env(Env *env)
     environnement = env;
 }
 
-int Scene::inter(Point3 &pt_inter, const Ray &r, int &type)
+int Scene::inter(Point3 &pt_inter, const Ray &r, int &type, Vector3 &normale)
 {
-    Point3 test;
+    Point3 test, n_int;
     float distance = -1, d_int;
     type = -1;
     int n_obj = -1;
 
     for (int i = 0; i < nb_objet; i++)
     {
-        if (r.has_been_reflected == i)
-        {
-            continue;
-        }
-        d_int = l_objets[i]->get_inter(r, test);
+        d_int = l_objets[i]->get_inter(r, test, n_int);
 
         if (d_int != -1 && (d_int < distance || distance == -1))
         {
+            normale = n_int;
             pt_inter = test;
             distance = d_int;
             n_obj = i;
@@ -90,13 +87,13 @@ Color Scene::get_PON(const Point3 &pt, const Vector3 &normale, const Materiaux &
 
 float Scene::inter_shadow(const Ray &r, float distance_light)
 {
-    Point3 test;
+    Point3 test, normale;
     float retour = 1;
     for (int i = 0; i < nb_objet; i++)
     {
         if (r.has_been_reflected == i)
             continue;
-        float d = (*l_objets[i]).get_inter(r, test);
+        float d = (*l_objets[i]).get_inter(r, test, normale);
         if (d >= distance_light || d < 0)
             continue;
         else
@@ -122,7 +119,7 @@ void Scene::compute(Ray &r, int prof, int profmax)
         Ray r_reflexion, r_transmission;
         Materiaux m;
         int type;
-        int no_obj = inter(pt_inter, r, type); // get the list position of the first object that intercepts the ray
+        int no_obj = inter(pt_inter, r, type, normale); // get the list position of the first object that intercepts the ray
         if (no_obj == -1)
         {
             r.pix = (*environnement).backgroud_color(r);
@@ -138,12 +135,11 @@ void Scene::compute(Ray &r, int prof, int profmax)
                 break;
             case 1:
                 Objet &current_obj = *l_objets[no_obj];
-                normale = current_obj.get_normal(pt_inter);
                 m = current_obj.get_mat(pt_inter);
                 r.has_been_reflected = no_obj;
                 Color diffuse_spec = get_PON(pt_inter, normale, m, r);
                 // load the reflected ray
-                float refraction_ratio = current_obj.ray_in(r) ? m.in_refractive_index / m.out_refractive_index : m.out_refractive_index / m.in_refractive_index;
+                float refraction_ratio = r.has_been_refracted == no_obj ? m.in_refractive_index / m.out_refractive_index : m.out_refractive_index / m.in_refractive_index;
                 float sin_theta = std::sqrt(1 - pow(normale.dot(r.dir), 2));
 
                 if (refraction_ratio * sin_theta > 1.0)
@@ -170,6 +166,7 @@ void Scene::compute(Ray &r, int prof, int profmax)
                     {
                         r_transmission = current_obj.get_refracted_ray(r, pt_inter, normale);
                         r_transmission.puissance = r.puissance * m.coef_refraction;
+                        r_transmission.has_been_refracted = no_obj;
                         compute(r_transmission, prof + 1, profmax);
                     }
                     else

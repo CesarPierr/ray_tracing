@@ -10,6 +10,7 @@ public:
     Color pix;
     float puissance = 1;
     int has_been_reflected = -1;
+    int has_been_refracted = -1;
 
     Ray();
 

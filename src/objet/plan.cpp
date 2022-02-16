@@ -3,7 +3,7 @@ Plan::Plan() : Pos(Point3(0.0, 0.0, 0.0)), normale(Vector3(1.0, 0.0, 0.0)) {}
 Plan::Plan(Point3 p, Vector3 v) : Pos(p), normale(v) {}
 Plan::Plan(Point3 p, Vector3 v, Materiaux m) : Pos(p), normale(v) { mat = m; }
 
-float Plan::get_inter(const Ray &r, Point3 &test)
+float Plan::get_inter(const Ray &r, Point3 &test, Vector3 &norm)
 {
     Point3 projete = r.src - normale.dot(r.src - Pos) * normale;
     if (r.dir.dot(projete - r.src) < 0)
@@ -17,13 +17,9 @@ float Plan::get_inter(const Ray &r, Point3 &test)
         float distance_plan = normale.dot(r.src - Pos);
         float t = -distance_plan / (r.dir.dot(normale));
         test = r.src + t * r.dir;
+        norm = normale;
         return t;
     }
-}
-
-Vector3 Plan::get_normal(const Point3 &inter)
-{
-    return normale;
 }
 
 Materiaux Plan::get_mat(const Point3 &p)

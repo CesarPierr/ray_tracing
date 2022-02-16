@@ -12,9 +12,7 @@ public:
     Plan(Point3 p, Vector3 v);
     Plan(Point3 p, Vector3 v, Materiaux m);
 
-    float get_inter(const Ray &r, Point3 &test);
-
-    Vector3 get_normal(const Point3 &inter);
+    float get_inter(const Ray &r, Point3 &test, Vector3 &normale);
 
     Ray get_refracted_ray(const Ray &inc_ray, Point3 p, const Vector3 &normale);
 

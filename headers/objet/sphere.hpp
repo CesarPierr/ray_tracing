@@ -15,15 +15,13 @@ public:
 
     ~Sphere(){};
 
-    float get_inter(const Ray &r, Point3 &p);
+    float get_inter(const Ray &r, Point3 &p, Vector3 &normale);
 
     bool ray_in(const Ray &r);
     Materiaux get_mat(const Point3 &p)
     {
         return mat;
     }
-
-    Vector3 get_normal(const Point3 &inter);
 
     void get_xml(pugi::xml_node sph);
 };

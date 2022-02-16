@@ -11,7 +11,7 @@ void Triangle::maj_normal()
 {
     normale = (B - A).vectorial_product(C - A);
 }
-float Triangle::get_inter(const Ray &r, Point3 &test)
+float Triangle::get_inter(const Ray &r, Point3 &test, Vector3 &norm)
 {
     Point3 projete = r.src - normale.dot(r.src - A) * normale;
     if (r.dir.dot(projete - r.src) < 0)
@@ -31,13 +31,9 @@ float Triangle::get_inter(const Ray &r, Point3 &test)
         Vector3 n3 = QC.vectorial_product(QA);
         if (n1.dot(n2) < 0 || n2.dot(n3) < 0)
             return -1;
+        norm = normale;
         return t;
     }
-}
-
-Vector3 Triangle::get_normal(const Point3 &inter)
-{
-    return normale;
 }
 
 Materiaux Triangle::get_mat(const Point3 &p)

@@ -40,7 +40,7 @@ public:
 
     void set_env(Env *env);
 
-    int inter(Point3 &pt_inter, const Ray &r, int &type);
+    int inter(Point3 &pt_inter, const Ray &r, int &type, Vector3 &normale);
 
     Color get_PON(const Point3 &pt, const Vector3 &normale, const Materiaux &m, const Ray &viewRay);
 
