@@ -10,6 +10,6 @@ normalement aucune (avoir g++)
 @user:~/ray_tracing$ make all
 ```
 
-## exemple de resultat
+## Creer sa scene
 
-![image](https://drive.google.com/file/d/1xoyhALXT3pvPJtr9qRdalTcjrdpwVxVv/view?usp=sharing)
+modifier le fichier *data.xml*
