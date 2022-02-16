@@ -1,0 +1,340 @@
+<RayTracerData >
+
+    <environnement>base</environnement>
+    <engine width="1920" heigh = "1080" pixel_size = "0.001">
+        <distance_from_screen>1</distance_from_screen>
+        <pos_viewer>
+            <x>-4.0</x>
+            <y>0.0</y>
+            <z>0.0</z>
+        </pos_viewer>
+        <vector_base>
+            <u>
+                <x>1.0</x>
+                <y>0.0</y>
+                <z>0.0</z>
+            </u>
+            <v>
+                <x>0.0</x>
+                <y>1.0</y>
+                <z>0.0</z>
+            </v>
+            <w>
+                <x>0.0</x>
+                <y>0.0</y>
+                <z>1.0</z>
+            </w>
+        </vector_base>
+        <angle>-0.3</angle>
+        
+        <nthread>8</nthread>
+        <antialliasing>3</antialliasing>
+        <prof_max>5</prof_max>
+
+    </engine>
+    
+    <l_objets name = "V1">
+        <Objet name= "S1" type ="Sphere">
+            <centre>
+                <x>26.0</x>
+                <y>4.0</y>
+                <z>4.0</z>
+            </centre>
+            <rayon>3.0</rayon>
+            <Materiaux>emerald_red</Materiaux>
+        </Objet>
+
+        <Objet name="S2" type ="Sphere">
+            <centre>
+                <x>35.0</x>
+                <y>-2.0</y>
+                <z>0</z>
+            </centre>
+            <rayon>3.0</rayon>
+            <Materiaux>emerald_green</Materiaux>
+        </Objet>
+
+        <Objet name="S3" type ="Sphere">
+            <centre>
+                <x>35.0</x>
+                <y>4.0</y>
+                <z>-4.0</z>
+            </centre>
+            <rayon>3.0</rayon>
+            <Materiaux>moquette_mirroir</Materiaux>
+        </Objet>
+        <Objet name="S4" type ="Sphere">
+            <centre>
+                <x>25.0</x>
+                <y>-2.0</y>
+                <z>-4.0</z>
+            </centre>
+            <rayon>3</rayon>
+            <Materiaux>glass</Materiaux>
+        </Objet>
+        <Objet name="S5" type ="Sphere">
+            <centre>
+                <x>25.0</x>
+                <y>-2.0</y>
+                <z>-4.0</z>
+            </centre>
+            <rayon>1.5</rayon>
+            <Materiaux>bronze</Materiaux>
+        </Objet>
+
+        <Objet name="P_sol" type = "Plan">
+            <centre>
+                <x>0</x>
+                <y>-5.0</y>
+                <z>0</z>
+            </centre>
+            <normale>
+                <u>0</u>
+                <v>1.0</v>
+                <w>0</w>
+            </normale>
+            <Materiaux>moquette_moche</Materiaux>
+        </Objet>
+
+
+        <Objet name="P_devant" type = "Plan">
+            <centre>
+                <x>45.0</x>
+                <y>0</y>
+                <z>0</z>
+            </centre>
+            <normale>
+                <u>-1.0</u>
+                <v>0</v>
+                <w>0</w>
+            </normale>
+            <Materiaux>moquette_jaune</Materiaux>
+        </Objet>
+
+        <Objet name="P_gauche" type="Plan" >
+            <centre>
+                <x>0</x>
+                <y>0</y>
+                <z>-12.0</z>
+            </centre>
+            <normale>
+                <u>0</u>
+                <v>0</v>
+                <w>1.0</w>
+            </normale>
+            <Materiaux>moquette_mirroir</Materiaux>
+        </Objet>
+
+        <Objet name = "P_droite" type = "Plan">
+            <centre>
+                <x>13.0</x>
+                <y>12.0</y>
+                <z>12.0</z>
+            </centre>
+            <normale>
+                <u>0</u>
+                <v>0</v>
+                <w>-1.0</w>
+            </normale>
+            <Materiaux>moquette_mirroir</Materiaux>
+        </Objet>
+
+        <Objet name = "P_haut" type = "Plan">
+            <centre>
+                <x>8.0</x>
+                <y>8.0</y>
+                <z>12.0</z>
+            </centre>
+            <normale>
+                <u>0</u>
+                <v>-1.0</v>
+                <w>0</w>
+            </normale>
+            <Materiaux>moquette_blanche</Materiaux>
+        </Objet>
+        <!--<Objet name="t1" type= "Triangle">
+            <B>
+                <x>26.0</x>
+                <y>4.0</y>
+                <z>4.0</z>
+            </B>
+            <A>
+                <x>35.0</x>
+                <y>-2.0</y>
+                <z>0</z>
+            </A>
+            <C>
+                <x>35.0</x>
+                <y>4.0</y>
+                <z>-4.0</z>
+            </C>
+            <Materiaux>bronze</Materiaux>
+
+        </Objet> -->
+
+        <Objet name = "P_derriere" type = "Plan">
+            <centre>
+                <x>-5.0</x>
+                <y>8.0</y>
+                <z>12.0</z>
+            </centre>
+            <normale>
+                <u>1.0</u>
+                <v>0</v>
+                <w>0</w>
+            </normale>
+            <Materiaux>moquette_moche</Materiaux>
+        </Objet>
+        <Objet name = "pyramide" type="ComplexShape">
+            <l_triangles>
+                <Objet name="" type= "Triangle">
+                    <A>
+                        <x>20</x>
+                        <y>-5.0</y>
+                        <z>3</z>
+                    </A>
+                    <B>
+                        <x>20</x>
+                        <y>-5.0</y>
+                        <z>6</z>
+                    </B>
+                    <C>
+                        <x>17</x>
+                        <y>-5.0</y>
+                        <z>3</z>
+                    </C>
+                    <Materiaux>emerald_green</Materiaux>
+        
+                </Objet>
+                <Objet name="" type= "Triangle">
+                    <A>
+                        <x>17</x>
+                        <y>-5.0</y>
+                        <z>6</z>
+                    </A>
+                    <B>
+                        <x>20</x>
+                        <y>-5.0</y>
+                        <z>6</z>
+                    </B>
+                    <C>
+                        <x>17</x>
+                        <y>-5.0</y>
+                        <z>3</z>
+                    </C>
+                    <Materiaux>emerald_green</Materiaux>
+                </Objet>
+                <Objet name="" type= "Triangle">
+                    <A>
+                        <x>17</x>
+                        <y>-5.0</y>
+                        <z>6</z>
+                    </A>
+                    <B>
+                        <x>18.5</x>
+                        <y>4</y>
+                        <z>4.5</z>
+                    </B>
+                    <C>
+                        <x>17</x>
+                        <y>-5.0</y>
+                        <z>3</z>
+                    </C>
+                    <Materiaux>emerald_green</Materiaux>
+                </Objet>
+                <Objet name="" type= "Triangle">
+                    <A>
+                        <x>20</x>
+                        <y>-5.0</y>
+                        <z>3</z>
+                    </A>
+                    <B>
+                        <x>20</x>
+                        <y>-5.0</y>
+                        <z>6</z>
+                    </B>
+                    <C>
+                        <x>18.5</x>
+                        <y>4</y>
+                        <z>4.5</z>
+                    </C>
+                    <Materiaux>emerald_green</Materiaux>
+                </Objet>
+                <Objet name="" type= "Triangle">
+                    <A>
+                        <x>17</x>
+                        <y>-5.0</y>
+                        <z>6</z>
+                    </A>
+                    <B>
+                        <x>20</x>
+                        <y>-5.0</y>
+                        <z>6</z>
+                    </B>
+                    <C>
+                        <x>18.5</x>
+                        <y>4</y>
+                        <z>4.5</z>
+                    </C>
+                    <Materiaux>emerald_green</Materiaux>
+                </Objet>
+                <Objet name="" type= "Triangle">
+                    <A>
+                        <x>17</x>
+                        <y>-5.0</y>
+                        <z>3</z>
+                    </A>
+                    <B>
+                        <x>20</x>
+                        <y>-5.0</y>
+                        <z>3</z>
+                    </B>
+                    <C>
+                        <x>18.5</x>
+                        <y>4</y>
+                        <z>4.5</z>
+                    </C>
+                    <Materiaux>emerald_green</Materiaux>
+                </Objet>
+            </l_triangles>
+            <Materiaux>emerald_bleue</Materiaux>
+        </Objet>
+        
+    </l_objets>
+
+
+    <l_light>
+        <light name = "L1" type="buble">
+            <position>
+                <x>30</x>
+                <y>7.0</y>
+                <z>0</z>
+            </position>
+            <rayon>1.0</rayon>
+            <color>
+                <r>0.7</r>
+                <g>0.7</g>
+                <b>0.7</b>
+            </color>
+            
+        </light>
+
+        <!--<light name = "L1" type="buble">
+            <position>
+                <x>10</x>
+                <y>7.0</y>
+                <z>0</z>
+            </position>
+            <rayon>1.0</rayon>
+            <color>
+                <r>0.7</r>
+                <g>0.7</g>
+                <b>0.7</b>
+            </color>
+            
+        </light>-->
+    </l_light>
+
+    
+    
+</RayTracerData>
