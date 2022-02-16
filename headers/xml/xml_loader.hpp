@@ -10,6 +10,6 @@
 #include "objet/complex_shape.hpp"
 using namespace pugi;
 
-int load_xml(Engine &eng, char *name);
+int load_xml(Engine &eng, char *name); // load all the parameters/objects/lights of the engine and the scene from a xml file
 
 #endif

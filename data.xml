@@ -26,6 +26,7 @@
             </w>
         </vector_base>
         <angle>-0.3</angle>
+        
         <nthread>8</nthread>
         <antialliasing>3</antialliasing>
         <prof_max>5</prof_max>

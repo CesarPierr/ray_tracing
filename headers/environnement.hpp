@@ -3,13 +3,13 @@
 #include "utils/materiaux.hpp"
 #include "utils/pointlight.hpp"
 
-class Env
+class Env // backgroud limits and color
 {
 public:
     virtual Color backgroud_color(const Ray &r) = 0;
 };
 
-class BaseEnv : public Env
+class BaseEnv : public Env // base black environement
 {
 public:
     BaseEnv(){};

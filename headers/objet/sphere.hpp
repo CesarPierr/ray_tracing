@@ -15,13 +15,13 @@ public:
 
     ~Sphere(){};
 
-    float get_inter(const Ray &r, Point3 &p, Vector3 &normale);
+    float get_inter(const Ray &r, Point3 &p, Vector3 &normale); // get the intersection between a ray and the light
 
-    Materiaux get_mat(const Point3 &p)
+    Materiaux get_mat(const Point3 &p) // get the material caracteristics of the object
     {
         return mat;
     }
 
-    void get_xml(pugi::xml_node sph);
+    void get_xml(pugi::xml_node sph); // load this object by xml
 };
 #endif

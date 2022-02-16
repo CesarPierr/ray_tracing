@@ -2,7 +2,7 @@
 #define COLOR_HPP
 #include "pointVector.hpp"
 
-class Color
+class Color // Color object
 {
 public:
     Vector3 rgb;
