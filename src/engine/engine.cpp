@@ -36,8 +36,9 @@ Vector3 Engine::get_color(int x, int y)
 
 void Engine::savePicture(const std::string &filename)
 {
-    std::ofstream ofs(filename.c_str(), std::ios::out | std::ios::binary);
-    ofs << "P6\n"
+    std::ofstream ofs;
+    ofs.open(filename);
+    ofs << "P3\n"
         << width << " " << height << "\n255\n";
 
     for (int i = 0; i < width * height; ++i)

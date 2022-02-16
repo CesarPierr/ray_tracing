@@ -17,5 +17,5 @@ void BaseEngine::Render()
         }
     }
 
-    savePicture("result.png");
+    savePicture("result.ppm");
 }

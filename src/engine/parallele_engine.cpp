@@ -19,7 +19,7 @@ void ParalleleEngine::Render()
             }
         }
     }
-    savePicture("result.png");
+    savePicture("result.ppm");
 }
 
 void ParalleleEngine::get_xml(pugi::xml_node sc)

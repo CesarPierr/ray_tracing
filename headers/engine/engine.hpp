@@ -2,8 +2,9 @@
 #define ENGINE_HPP
 #include "utils/pointlight.hpp"
 #include "scene.hpp"
-#include "utils/bitmap_image.hpp"
 #include "xml/pugixml.hpp"
+#include <iostream>
+#include <fstream>
 #include <random>
 
 class Engine : public std::vector<Vector3>

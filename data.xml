@@ -2,7 +2,7 @@
 
     <environnement>base</environnement>
     <engine width="1920" heigh = "1080" pixel_size = "0.001">
-        <distance_from_screen>1.2</distance_from_screen>
+        <distance_from_screen>1</distance_from_screen>
         <pos_viewer>
             <x>-4.0</x>
             <y>0.0</y>
@@ -25,7 +25,7 @@
                 <z>1.0</z>
             </w>
         </vector_base>
-        <angle>0</angle>
+        <angle>0.5</angle>
         <nthread>8</nthread>
         <antialliasing>3</antialliasing>
         <prof_max>10</prof_max>
@@ -40,7 +40,7 @@
                 <z>4.0</z>
             </centre>
             <rayon>3.0</rayon>
-            <Materiaux>moquette_mirroir</Materiaux>
+            <Materiaux>emerald_red</Materiaux>
         </Objet>
 
         <Objet name="S2" type ="Sphere">
@@ -60,9 +60,26 @@
                 <z>-4.0</z>
             </centre>
             <rayon>3.0</rayon>
-            <Materiaux>emerald_red</Materiaux>
+            <Materiaux>moquette_mirroir</Materiaux>
         </Objet>
-
+        <Objet name="S4" type ="Sphere">
+            <centre>
+                <x>25.0</x>
+                <y>-2.0</y>
+                <z>-4.0</z>
+            </centre>
+            <rayon>4</rayon>
+            <Materiaux>glass</Materiaux>
+        </Objet>
+        <Objet name="S5" type ="Sphere">
+            <centre>
+                <x>25.0</x>
+                <y>-2.0</y>
+                <z>-4.0</z>
+            </centre>
+            <rayon>2.0</rayon>
+            <Materiaux>bronze</Materiaux>
+        </Objet>
 
         <Objet name="P_sol" type = "Plan">
             <centre>
@@ -107,20 +124,6 @@
             <Materiaux>moquette_mirroir</Materiaux>
         </Objet>
 
-        <Objet name="P_centre" type="Plan" >
-            <centre>
-                <x>12</x>
-                <y>0</y>
-                <z>0</z>
-            </centre>
-            <normale>
-                <u>1</u>
-                <v>0</v>
-                <w>0</w>
-            </normale>
-            <Materiaux>glass</Materiaux>
-        </Objet>
-
         <Objet name = "P_droite" type = "Plan">
             <centre>
                 <x>13.0</x>
@@ -162,25 +165,7 @@
             </normale>
             <Materiaux>moquette_moche</Materiaux>
         </Objet>
-        <Objet name="t1" type= "Triangle">
-            <B>
-                <x>26.0</x>
-                <y>4.0</y>
-                <z>4.0</z>
-            </B>
-            <A>
-                <x>35.0</x>
-                <y>-2.0</y>
-                <z>0</z>
-            </A>
-            <C>
-                <x>35.0</x>
-                <y>4.0</y>
-                <z>-4.0</z>
-            </C>
-            <Materiaux>bronze</Materiaux>
-
-        </Objet>
+        
     </l_objets>
 
 
@@ -188,6 +173,21 @@
         <light name = "L1" type="buble">
             <position>
                 <x>30</x>
+                <y>7.0</y>
+                <z>0</z>
+            </position>
+            <rayon>1.0</rayon>
+            <color>
+                <r>0.7</r>
+                <g>0.7</g>
+                <b>0.7</b>
+            </color>
+            
+        </light>
+
+        <light name = "L1" type="buble">
+            <position>
+                <x>10</x>
                 <y>7.0</y>
                 <z>0</z>
             </position>
