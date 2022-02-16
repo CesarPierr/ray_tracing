@@ -10,6 +10,8 @@ sudo apt-get install libomp-dev
 (install g++ et les librairies de base necessaires + openmp)
 ## Compilation
 
+make all
+
 ```console
 @user:~/ray_tracing$ make all
 ```
