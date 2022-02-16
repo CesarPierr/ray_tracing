@@ -2,7 +2,7 @@
 
     <environnement>base</environnement>
     <engine width="1920" heigh = "1080" pixel_size = "0.001">
-        <distance_from_screen>1.0</distance_from_screen>
+        <distance_from_screen>1.2</distance_from_screen>
         <pos_viewer>
             <x>-4.0</x>
             <y>0.0</y>
@@ -25,6 +25,7 @@
                 <z>1.0</z>
             </w>
         </vector_base>
+        <angle>0.7</angle>
         <nthread>8</nthread>
         <antialliasing>3</antialliasing>
         <prof_max>3</prof_max>
@@ -104,6 +105,20 @@
                 <w>1.0</w>
             </normale>
             <Materiaux>moquette_mirroir</Materiaux>
+        </Objet>
+
+        <Objet name="P_centre" type="Plan" >
+            <centre>
+                <x>12</x>
+                <y>0</y>
+                <z>0</z>
+            </centre>
+            <normale>
+                <u>1</u>
+                <v>0</v>
+                <w>0</w>
+            </normale>
+            <Materiaux>glass</Materiaux>
         </Objet>
 
         <Objet name = "P_droite" type = "Plan">

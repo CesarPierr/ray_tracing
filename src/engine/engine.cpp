@@ -64,20 +64,21 @@ void Engine::set_scene(Scene &scene)
 void Engine::get_xml(pugi::xml_node sc)
 {
     Materiaux m;
-    int ratio = std::atoi(sc.attribute("ratio").value());
+
     width = std::atoi(sc.attribute("width").value());
     height = std::atoi(sc.attribute("heigh").value());
     this->reserve(width * height);
     pixel_size = std::atof(sc.attribute("pixel_size").value());
 
     distance = atof(sc.child("distance_from_screen").child_value());
+    float angle = std::atof(sc.child("angle").child_value());
+    std::cout << angle << std::endl;
     distance = distance * sqrt((double)(width * height) / (double)(1920 * 1080));
     auto posi = sc.child("pos_viewer");
     float x = std::atof(posi.child("x").child_value());
     float y = std::atof(posi.child("y").child_value());
     float z = std::atof(posi.child("z").child_value());
     pos = Point3(x, y, z);
-
     auto u1 = sc.child("vector_base").child("u");
     auto u2 = sc.child("vector_base").child("v");
     auto u3 = sc.child("vector_base").child("w");
@@ -85,6 +86,8 @@ void Engine::get_xml(pugi::xml_node sc)
     x = std::atof(u1.child("x").child_value());
     y = std::atof(u1.child("y").child_value());
     z = std::atof(u1.child("z").child_value());
+    x = x * cosf(angle) + z * sinf(angle);
+    z = -x * sinf(angle) + z * cosf(angle);
     t = Vector3(x, y, z);
 
     x = std::atof(u2.child("x").child_value());
@@ -95,6 +98,8 @@ void Engine::get_xml(pugi::xml_node sc)
     x = std::atof(u3.child("x").child_value());
     y = std::atof(u3.child("y").child_value());
     z = std::atof(u3.child("z").child_value());
+    x = x * cosf(angle) + z * sinf(angle);
+    z = -x * sinf(angle) + z * cosf(angle);
     aa = std::atoi(sc.child("antialliasing").child_value());
     prof_max = std::atoi(sc.child("prof_max").child_value());
     b = Vector3(x, y, z);

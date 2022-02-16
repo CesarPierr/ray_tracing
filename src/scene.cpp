@@ -30,7 +30,9 @@ int Scene::inter(Point3 &pt_inter, const Ray &r, int &type)
     for (int i = 0; i < nb_objet; i++)
     {
         if (r.has_been_reflected == i)
+        {
             continue;
+        }
         d_int = l_objets[i]->get_inter(r, test);
 
         if (d_int != -1 && (d_int < distance || distance == -1))
@@ -92,12 +94,13 @@ float Scene::inter_shadow(const Ray &r, float distance_light)
     float retour = 1;
     for (int i = 0; i < nb_objet; i++)
     {
+        if (r.has_been_reflected == i)
+            continue;
         float d = (*l_objets[i]).get_inter(r, test);
         if (d >= distance_light || d < 0)
             continue;
         else
         {
-            // std::cout << r.src << " " << d << " " << i << " " << r.has_been_reflected << std::endl;
             retour *= (*l_objets[i]).mat.coef_refraction;
         }
 

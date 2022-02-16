@@ -6,7 +6,7 @@ Plan::Plan(Point3 p, Vector3 v, Materiaux m) : Pos(p), normale(v) { mat = m; }
 float Plan::get_inter(const Ray &r, Point3 &test)
 {
     Point3 projete = r.src - normale.dot(r.src - Pos) * normale;
-    if (r.dir.dot(projete - r.src) < 0 || std::abs(normale.dot(r.dir)) <= 0.1 || (projete - r.src).norm() <= 0.001f)
+    if (r.dir.dot(projete - r.src) < 0)
     {
         // std::cout << "salut" << std::endl;
         return -1;
@@ -34,7 +34,7 @@ Ray Plan::get_refracted_ray(const Ray &inc_ray, Point3 p, const Vector3 &normale
 {
     // std::cout << p << std::endl;
     Ray refract(inc_ray);
-    refract.src = p + 0.01f * inc_ray.dir;
+    refract.src = p + 0.001f * inc_ray.dir;
     return refract;
 }
 void Plan::get_xml(pugi::xml_node pl)
