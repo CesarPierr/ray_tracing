@@ -137,3 +137,7 @@ Pour une lumiere spherique :
             
         </light>
 ```
+
+## Execution
+
+lancer le main créé à la racine 
