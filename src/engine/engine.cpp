@@ -72,7 +72,6 @@ void Engine::get_xml(pugi::xml_node sc)
 
     distance = atof(sc.child("distance_from_screen").child_value());
     float angle = std::atof(sc.child("angle").child_value());
-    std::cout << angle << std::endl;
     distance = distance * sqrt((double)(width * height) / (double)(1920 * 1080));
     auto posi = sc.child("pos_viewer");
     float x = std::atof(posi.child("x").child_value());

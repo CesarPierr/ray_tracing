@@ -6,6 +6,7 @@
 #include "objet/sphere.hpp"
 #include "objet/plan.hpp"
 #include "light/buble_light.hpp"
+#include "objet/triangle.hpp"
 using namespace pugi;
 
 int load_xml(Engine &eng, char *name);

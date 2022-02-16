@@ -25,10 +25,10 @@
                 <z>1.0</z>
             </w>
         </vector_base>
-        <angle>0.7</angle>
+        <angle>0</angle>
         <nthread>8</nthread>
         <antialliasing>3</antialliasing>
-        <prof_max>3</prof_max>
+        <prof_max>10</prof_max>
 
     </engine>
     
@@ -161,6 +161,25 @@
                 <w>0</w>
             </normale>
             <Materiaux>moquette_moche</Materiaux>
+        </Objet>
+        <Objet name="t1" type= "Triangle">
+            <B>
+                <x>26.0</x>
+                <y>4.0</y>
+                <z>4.0</z>
+            </B>
+            <A>
+                <x>35.0</x>
+                <y>-2.0</y>
+                <z>0</z>
+            </A>
+            <C>
+                <x>35.0</x>
+                <y>4.0</y>
+                <z>-4.0</z>
+            </C>
+            <Materiaux>bronze</Materiaux>
+
         </Objet>
     </l_objets>
 

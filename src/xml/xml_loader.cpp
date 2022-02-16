@@ -22,7 +22,7 @@ int load_xml(Engine &eng, char *name)
     {
         BaseEnv *env = new BaseEnv();
         scene->set_env(env);
-        }
+    }
     else
     {
         BaseEnv *env = new BaseEnv();
@@ -46,6 +46,12 @@ int load_xml(Engine &eng, char *name)
             Plan *pl = new Plan();
             pl->get_xml(obj);
             scene->add_object(*pl);
+        }
+        else if (strcmp(obj.attribute("type").value(), "Triangle") == 0)
+        {
+            Triangle *tr = new Triangle();
+            tr->get_xml(obj);
+            scene->add_object(*tr);
         }
     }
     for (auto lum : l_lights)
