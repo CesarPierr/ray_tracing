@@ -4,6 +4,7 @@ Buble_light::Buble_light() : centre(Point3(0.0, 0.0, 0.0)), rayon(1) { power = l
 
 Buble_light::Buble_light(Point3 c, float r) : centre(c), rayon(r) { power = low_dispersion; }
 
+//get the illumination depending on the distance between the surface and the light
 float Buble_light::get_inter(const Point3 &p, Vector3 &L, Color &c)
 {
     L = centre - p;
@@ -12,7 +13,7 @@ float Buble_light::get_inter(const Point3 &p, Vector3 &L, Color &c)
     c = get_color(p, distance);
     return distance - rayon;
 }
-
+//get the intersection between a ray and the light
 float Buble_light::get_inter_ray(const Ray &r, Point3 p)
 {
     float distance = -1;

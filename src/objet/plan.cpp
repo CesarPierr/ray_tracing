@@ -3,7 +3,7 @@ Plan::Plan() : Pos(Point3(0.0, 0.0, 0.0)), normale(Vector3(1.0, 0.0, 0.0)) {}
 Plan::Plan(Point3 p, Vector3 v) : Pos(p), normale(v) {}
 Plan::Plan(Point3 p, Vector3 v, Materiaux m) : Pos(p), normale(v) { mat = m; }
 
-float Plan::get_inter(const Ray &r, Point3 &test, Vector3 &norm)
+float Plan::get_inter(const Ray &r, Point3 &test, Vector3 &norm) 
 {
     Point3 projete = r.src - normale.dot(r.src - Pos) * normale;
     if (r.dir.dot(projete - r.src) < 0)
@@ -26,7 +26,7 @@ Materiaux Plan::get_mat(const Point3 &p)
 {
     return mat;
 }
-Ray Plan::get_refracted_ray(const Ray &inc_ray, Point3 p, const Vector3 &normale, bool in)
+Ray Plan::get_refracted_ray(const Ray &inc_ray, Point3 p, const Vector3 &normale, bool in)// redefinition because not refracted, just transmitted
 {
     // std::cout << p << std::endl;
     Ray refract(inc_ray);

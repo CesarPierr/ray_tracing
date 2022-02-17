@@ -121,7 +121,7 @@ Color operator*(float v, const Color &c)
     Color tmp(c);
     return tmp * v;
 }
-
+//implemented to improve the Anti aliasing technic but not used yet
 float Distance(const Color &c1, const Color &c2)
 {
     return std::max(std::fabs(c1.r() - c2.r()), std::max(std::fabs(c1.g() - c2.g()), std::fabs(c1.b() - c2.b())));

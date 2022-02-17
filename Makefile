@@ -31,7 +31,7 @@ init:
 
 clean:
 	@echo Clearing...
-	rm -fr $(OBJDIR)/ $(DEPDIR)/ main result.png
+	rm -fr $(OBJDIR)/ $(DEPDIR)/ main result.ppm
 
 .PHONY: all clean test
 

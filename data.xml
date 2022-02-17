@@ -27,9 +27,9 @@
         </vector_base>
         <angle>-0.3</angle>
         
-        <nthread>8</nthread>
-        <antialliasing>3</antialliasing>
-        <prof_max>5</prof_max>
+        <nthread>7</nthread>
+        <antialliasing>2</antialliasing>
+        <prof_max>6</prof_max>
 
     </engine>
     
@@ -299,7 +299,6 @@
             </l_triangles>
             <Materiaux>emerald_bleue</Materiaux>
         </Objet>
-        
     </l_objets>
 
 

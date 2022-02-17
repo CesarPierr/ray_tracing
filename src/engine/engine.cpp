@@ -22,7 +22,7 @@ Vector3 Engine::get_color(int x, int y)
     Vector3 c(0.0, 0.0, 0.0);
     Vector3 v_dir;
     Ray r;
-    for (int k = 0; k < aa; k++)
+    for (int k = 0; k < aa; k++) //get the direction of the ray in the (x,y) pixel
     {
         dx = random_double();
         dy = random_double();
@@ -34,7 +34,7 @@ Vector3 Engine::get_color(int x, int y)
     return c * (1 / (float)aa);
 }
 
-void Engine::savePicture(const std::string &filename)
+void Engine::savePicture(const std::string &filename) //save the picture in the ppm format
 {
     std::ofstream ofs;
     ofs.open(filename);
@@ -57,12 +57,12 @@ void Engine::savePicture(const std::string &filename)
     ofs.close();
 }
 
-void Engine::set_scene(Scene &scene)
+void Engine::set_scene(Scene &scene) // set the scene
 {
     S = scene;
 }
 
-void Engine::get_xml(pugi::xml_node sc)
+void Engine::get_xml(pugi::xml_node sc) 
 {
     Materiaux m;
 

@@ -1,7 +1,7 @@
 #include "objet/complex_shape.hpp"
 
 ComplexShape::ComplexShape(){};
-float ComplexShape::get_inter(const Ray &r, Point3 &pt_inter, Vector3 &normale)
+float ComplexShape::get_inter(const Ray &r, Point3 &pt_inter, Vector3 &normale)//get the intersection among all the triangles
 {
     float distance = -1, d_int;
     int n_obj = -1;

@@ -22,7 +22,7 @@ void ParalleleEngine::Render()
     savePicture("result.ppm");
 }
 
-void ParalleleEngine::get_xml(pugi::xml_node sc)
+void ParalleleEngine::get_xml(pugi::xml_node sc) //use the engine methode + get the number of threads
 {
     threads = std::atoi(sc.child("nthread").child_value());
     Engine::get_xml(sc);
