@@ -1,5 +1,6 @@
 # ray_tracing
 
+Ce projet est un moteur de lancer de rayon permetant de generer des images réaliste d'une scene configurée dans un fichier xml
 ## Dependances
 
 sur ubuntu : 
