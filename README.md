@@ -4,7 +4,7 @@ Ce projet est un moteur de lancer de rayon permetant de generer des images réal
 
 ### Exemple de resultat obtenu
 
-![alt text](https://github.com/CesarPierr/ray_tracing/blob/main/result.ppm?raw=true)
+![alt text](https://github.com/CesarPierr/ray_tracing/blob/main/exemple.png?raw=true)
 
 ## Dependances
 
